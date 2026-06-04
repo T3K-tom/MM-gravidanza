@@ -842,7 +842,6 @@ function render() {
       bodyHTML = `<div class="week-body" id="b${i}">
         <div class="summary-box">
           <p><strong>⚔️ Il piccolo witcher:</strong> ${w.baby.join(' · ')}</p>
-          <p><strong>🔮 Martina la Sorceress:</strong> ${w.mama.join(' · ')}</p>
           <p><strong>Esami:</strong> ${w.exam.join(' · ')}</p>
         </div></div>`;
     } else {
@@ -856,7 +855,6 @@ function render() {
         </div>
       </div>` : '';
       const bp = w.baby.map(x=>`<span class="pill p-baby">${x}</span>`).join('');
-      const mp = w.mama.map(x=>`<span class="pill p-mama">${x}</span>`).join('');
       const ep = w.exam.map(x=>`<span class="pill p-exam">${x}</span>`).join('');
       const curMap = {14: ["Se Geralt fosse fuori dall'utero, riuscirebbe a succhiare il pollice 👍", 'Il suo cuore batte 2 volte più veloce del tuo', 'Riconosce già la voce di Martina — ci sente davvero!'], 15: ['Le sue orecchie sono ora al posto giusto — prima erano sul collo 😅', 'Può percepire la luce attraverso la pancia di Martina', 'Se lo solleticassi, reagirebbe — i riflessi funzionano'], 16: ['Fa già smorfie e sbatte gli occhi', 'Il cuore di Geralt pompa 23 litri di sangue al giorno — più del tuo!', 'Produce già meconio: le prime feci, nere come la notte del Continente 🌑'], 17: ['Le sue impronte digitali sono uniche — già ora, già sue ⚔️', "Può sentire i rumori forti dall'esterno e trasalire", 'Il grasso che si forma ora lo terrà al caldo fuori dal grembo 🛡️'], 18: ['Geralt assaggia quello che mangia Martina — il liquido amniotico cambia sapore!', 'Le sue gambe ora sono più lunghe delle braccia — finalmente proporzionato 😄', 'Il cervello sta costruendo milioni di connessioni neuronali ogni giorno 🧠'], 19: ['Si ricopre di vernice caseosa — una crema protettiva naturale 🧴', 'Sogna già! I movimenti REM sono stati osservati in utero 💤', 'Se è femmina, ha già tutte le uova che avrà per tutta la vita — incredibile!'], 20: ['A 20 settimane è lungo come una banana — ma pesa meno di una lattina 🍌', 'Il suo udito è così sviluppato che potrebbe riconoscere una canzone sentita spesso ora', 'I calci che sente Martina sono allenamenti — Geralt si prepara ⚔️'], 21: ["Le circonvoluzioni del cervello iniziano a formarsi — diventa sempre più 'lui'", 'Può sbadigliare, starnutire e avere il singhiozzo (Martina potrebbe sentire piccoli ritmi ripetuti!)', 'Le unghie sono già abbastanza lunghe da graffiarsi — sì, in utero 😅'], 22: ['Geralt pesa ora come una lattina e mezza di pomodori 🍅', 'Il grasso bruno che produce genera calore — il suo primo sistema di riscaldamento', 'I testicoli (se maschio) stanno scendendo — un viaggio lungo settimane!'], 23: ['Sogna regolarmente — chissà cosa vede il piccolo witcher 🌙', "I polmoni si 'allenano' inalando liquido amniotico — si prepara al primo respiro", 'La pelle è ancora quasi trasparente — si vedono i vasi sanguigni attraverso'], 24: ['A 24 settimane Geralt ha raggiunto la soglia di viabilità — potrebbe sopravvivere fuori con supporto medico intensivo', 'Sussulta ai rumori forti — metti la musica! 🎵', 'Il cervello inizia a controllare la temperatura corporea'], 25: ['Stringe forte il pugno — riflesso che userà per afferrare il tuo dito 🤝', 'I capillari danno ora un colore rosato alla pelle', "Distingue già il sapore dolce dall'amaro nel liquido amniotico"], 26: ['Apre e chiude gli occhi — percepisce la luce attraverso la pancia 👁️', "Il battito cardiaco di Geralt si può sentire appoggiando l'orecchio alla pancia di Martina 💓", 'Pesa quasi 1 kg — meno di un sacchetto di farina!'], 27: ['Geralt può riconoscere le voci di mamma e papà — parlagli! 🗣️', 'Il sistema immunitario inizia a ricevere anticorpi da Martina attraverso la placenta 🛡️', "Se nasce ora, con cure intensive ha ottime probabilità — ma aspetta ancora un po'! ⚔️"]};
       const curList = (typeof w.n === 'number' && curMap[w.n]) ? curMap[w.n] : [];
@@ -865,7 +863,6 @@ function render() {
       bodyHTML = `<div class="week-body" id="b${i}">
         ${banner}
         <div class="slabel">⚔️ Il piccolo witcher</div><div class="pills">${bp}</div>
-        <div class="slabel">🔮 Martina la Sorceress</div><div class="pills">${mp}</div>
         ${ep?`<div class="slabel">Esami / visite</div><div class="pills">${ep}</div>`:''}
         ${np?`<div class="slabel">Note</div><div class="pills">${np}</div>`:''}
         ${cp?`<div class="slabel">🔍 Lo sapevi?</div><div class="pills">${cp}</div>`:''}
