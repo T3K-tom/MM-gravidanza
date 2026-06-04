@@ -68,6 +68,7 @@ h1 { font-size: 18px; font-weight: 500; margin-bottom: 3px; }
 .p-mama { background: #EEEDFE; color: #3C3489; }
 .p-exam { background: #FAEEDA; color: #633806; }
 .p-note { background: #FAECE7; color: #4A1B0C; }
+.p-cur { background: #EFF6FF; color: #1e3a8a; }
 
 .summary-box { background: #f5f5f1; border-radius: 8px; padding: 10px 12px; }
 .summary-box p { font-size: 12px; color: #555; line-height: 1.6; margin-bottom: 7px; }
@@ -148,7 +149,7 @@ document.head.appendChild(linkEl);
 
 <div class="tab-bar">
   <button class="tab-btn active" id="btn-geralt" onclick="switchTab('geralt')">⚔️ Il piccolo Geralt</button>
-  <button class="tab-btn" id="btn-martina" onclick="switchTab('martina')">🔮 Il corpo di Martina</button>
+  <button class="tab-btn" id="btn-martina" onclick="switchTab('martina')">🔮 Il corpo di Martina!</button>
 </div>
 <div class="tab-section active" id="tab-geralt">
   <div id="cards"></div>
@@ -170,11 +171,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb0">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">Quasi invisibile fino alla settimana 10–11. L'utero è ancora in pelvi. Verso la fine del trimestre inizia a sporgere appena — più gonfiore che vera pancia.</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Cambia subito! Già dalle prime settimane diventa più sensibile, più grande, più pieno. L'areola inizia a scurirsi. Può fare male al tatto.</div>
       </div>
       <div class="body-section">
@@ -202,11 +203,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb1">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">Inizia a sporgere sotto l'ombelico — una piccola cupola bassa. Di sera è più evidente (i muscoli si rilassano). Con vestiti normali si nasconde ancora a fatica.</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Più grande di 1–2 taglie rispetto a prima. L'areola è più scura e più ampia. Possibili piccoli bumps (ghiandole di Montgomery) intorno al capezzolo — normalissimi.</div>
       </div>
       <div class="body-section">
@@ -234,11 +235,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb2">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">Rotonda e bassa, ancora sotto l'ombelico. La pelle si inizia a distendere — momento giusto per iniziare con oli idratanti.</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Continua a crescere. Possibili primi capillari visibili sulla superficie.</div>
       </div>
       <div class="body-section">
@@ -266,11 +267,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb3">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">L'utero si sente a 3 dita sotto l'ombelico dall'esterno. La pancia è ora chiaramente visibile — impossibile scambiarla per "ho mangiato troppo".</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Può iniziare a perdere qualche goccia di colostro (liquido giallognolo) — normalissimo, può succedere già da ora.</div>
       </div>
       <div class="body-section">
@@ -298,11 +299,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb4">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">Ben visibile, ormai inconfondibile. L'ombelico inizia ad appiattirsi man mano che la pelle si distende. La forma è ancora bassa.</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Molto più grande — molte donne hanno già preso 1–2 taglie. Il reggiseno pre-gravidanza non va più bene.</div>
       </div>
       <div class="body-section">
@@ -330,11 +331,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb5">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">Rotonda e compatta. L'altezza uterina cresce di ~1 cm a settimana. La forma è ancora bassa ma inizia a salire verso l'ombelico. Di profilo è inconfondibile.</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Potrebbe aver preso fino a 2 taglie in più. L'areola è scura e più grande. Possibile gocciolamento di colostro.</div>
       </div>
       <div class="body-section">
@@ -362,11 +363,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb6">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">L'ombelico è quasi piatto. La pancia sale visibilmente verso l'ombelico. Il profilo laterale è ora chiaramente rotondo.</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Stabile nelle dimensioni ma continua a prepararsi — il tessuto ghiandolare aumenta.</div>
       </div>
       <div class="body-section">
@@ -394,11 +395,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb7">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">L'utero raggiunge l'ombelico! La forma è ora la classica pancia tonda e alta. Peso totale in più: indicativamente 4–6 kg.</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Molto pieno e pesante. Utile iniziare a dormire con un reggiseno morbido se c'è fastidio di notte.</div>
       </div>
       <div class="body-section">
@@ -426,11 +427,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb8">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">Cresce verso l'alto — non solo in avanti. L'ombelico inizia a sporgere in fuori in molte donne.</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Può iniziare a produrre colostro più regolarmente. I capillari sulla superficie sono visibili.</div>
       </div>
       <div class="body-section">
@@ -458,11 +459,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb9">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">Grande e rotonda da qualsiasi angolazione. I jeans pre-gravidanza sono definitivamente finiti.</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Può aver preso 2–3 taglie in più rispetto a prima della gravidanza.</div>
       </div>
       <div class="body-section">
@@ -490,11 +491,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb10">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">L'ombelico sporge completamente in molte donne. Geralt scalcia — i movimenti si vedono dall'esterno!</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Grande e pesante. Utile valutare un reggiseno premaman con buon supporto.</div>
       </div>
       <div class="body-section">
@@ -522,11 +523,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb11">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">Grande e prominente — visibile anche di spalle! La pelle è tesa e a volte lucida. Peso in più: ~6–8 kg indicativamente.</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Stabile ma molto pieno. Il capezzolo può essere più sensibile.</div>
       </div>
       <div class="body-section">
@@ -554,11 +555,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb12">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">Supera chiaramente la linea dell'ombelico verso l'alto. La forma è alta e rotonda.</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Gocciolamento di colostro più frequente — utile un disco assorbilatte.</div>
       </div>
       <div class="body-section">
@@ -586,11 +587,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb13">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">Alta e rotonda — Geralt scalcia forte e si vede dall'esterno! Possibili contrazioni di Braxton-Hicks (false contrazioni, indolori).</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Molto pesante — il supporto di un buon reggiseno è fondamentale.</div>
       </div>
       <div class="body-section">
@@ -618,11 +619,11 @@ document.head.appendChild(linkEl);
     </div>
     <div class="body-body" id="mb14">
       <div class="body-section">
-        <div class="body-section-title">🫃 Panciona</div>
+        <div class="body-section-title label-pancia">🫃 Panciona</div>
         <div class="body-section-text">L'utero è circa 7 cm sopra l'ombelico. La pancia è imponente — piena, rotonda, alta. Peso totale in più: ~8–10 kg indicativamente.</div>
       </div>
       <div class="body-section">
-        <div class="body-section-title">🍈 Seno</div>
+        <div class="body-section-title label-tette">🍈 Tette</div>
         <div class="body-section-text">Ha raggiunto la sua forma premaman quasi definitiva. Molto più grande e pesante di prima.</div>
       </div>
       <div class="body-section">
@@ -857,6 +858,9 @@ function render() {
       const bp = w.baby.map(x=>`<span class="pill p-baby">${x}</span>`).join('');
       const mp = w.mama.map(x=>`<span class="pill p-mama">${x}</span>`).join('');
       const ep = w.exam.map(x=>`<span class="pill p-exam">${x}</span>`).join('');
+      const curMap = {14: ["Se Geralt fosse fuori dall'utero, riuscirebbe a succhiare il pollice 👍", 'Il suo cuore batte 2 volte più veloce del tuo', 'Riconosce già la voce di Martina — ci sente davvero!'], 15: ['Le sue orecchie sono ora al posto giusto — prima erano sul collo 😅', 'Può percepire la luce attraverso la pancia di Martina', 'Se lo solleticassi, reagirebbe — i riflessi funzionano'], 16: ['Fa già smorfie e sbatte gli occhi', 'Il cuore di Geralt pompa 23 litri di sangue al giorno — più del tuo!', 'Produce già meconio: le prime feci, nere come la notte del Continente 🌑'], 17: ['Le sue impronte digitali sono uniche — già ora, già sue ⚔️', "Può sentire i rumori forti dall'esterno e trasalire", 'Il grasso che si forma ora lo terrà al caldo fuori dal grembo 🛡️'], 18: ['Geralt assaggia quello che mangia Martina — il liquido amniotico cambia sapore!', 'Le sue gambe ora sono più lunghe delle braccia — finalmente proporzionato 😄', 'Il cervello sta costruendo milioni di connessioni neuronali ogni giorno 🧠'], 19: ['Si ricopre di vernice caseosa — una crema protettiva naturale 🧴', 'Sogna già! I movimenti REM sono stati osservati in utero 💤', 'Se è femmina, ha già tutte le uova che avrà per tutta la vita — incredibile!'], 20: ['A 20 settimane è lungo come una banana — ma pesa meno di una lattina 🍌', 'Il suo udito è così sviluppato che potrebbe riconoscere una canzone sentita spesso ora', 'I calci che sente Martina sono allenamenti — Geralt si prepara ⚔️'], 21: ["Le circonvoluzioni del cervello iniziano a formarsi — diventa sempre più 'lui'", 'Può sbadigliare, starnutire e avere il singhiozzo (Martina potrebbe sentire piccoli ritmi ripetuti!)', 'Le unghie sono già abbastanza lunghe da graffiarsi — sì, in utero 😅'], 22: ['Geralt pesa ora come una lattina e mezza di pomodori 🍅', 'Il grasso bruno che produce genera calore — il suo primo sistema di riscaldamento', 'I testicoli (se maschio) stanno scendendo — un viaggio lungo settimane!'], 23: ['Sogna regolarmente — chissà cosa vede il piccolo witcher 🌙', "I polmoni si 'allenano' inalando liquido amniotico — si prepara al primo respiro", 'La pelle è ancora quasi trasparente — si vedono i vasi sanguigni attraverso'], 24: ['A 24 settimane Geralt ha raggiunto la soglia di viabilità — potrebbe sopravvivere fuori con supporto medico intensivo', 'Sussulta ai rumori forti — metti la musica! 🎵', 'Il cervello inizia a controllare la temperatura corporea'], 25: ['Stringe forte il pugno — riflesso che userà per afferrare il tuo dito 🤝', 'I capillari danno ora un colore rosato alla pelle', "Distingue già il sapore dolce dall'amaro nel liquido amniotico"], 26: ['Apre e chiude gli occhi — percepisce la luce attraverso la pancia 👁️', "Il battito cardiaco di Geralt si può sentire appoggiando l'orecchio alla pancia di Martina 💓", 'Pesa quasi 1 kg — meno di un sacchetto di farina!'], 27: ['Geralt può riconoscere le voci di mamma e papà — parlagli! 🗣️', 'Il sistema immunitario inizia a ricevere anticorpi da Martina attraverso la placenta 🛡️', "Se nasce ora, con cure intensive ha ottime probabilità — ma aspetta ancora un po'! ⚔️"]};
+      const curList = (typeof w.n === 'number' && curMap[w.n]) ? curMap[w.n] : [];
+      const cp = curList.map(x=>`<span class="pill p-cur">${x}</span>`).join('');
       const np = w.note.map(x=>`<span class="pill p-note">${x}</span>`).join('');
       bodyHTML = `<div class="week-body" id="b${i}">
         ${banner}
@@ -864,6 +868,7 @@ function render() {
         <div class="slabel">🔮 Martina la Sorceress</div><div class="pills">${mp}</div>
         ${ep?`<div class="slabel">Esami / visite</div><div class="pills">${ep}</div>`:''}
         ${np?`<div class="slabel">Note</div><div class="pills">${np}</div>`:''}
+        ${cp?`<div class="slabel">🔍 Lo sapevi?</div><div class="pills">${cp}</div>`:''}
       </div>`;
     }
 
@@ -904,10 +909,7 @@ function switchTab(tab) {
   document.getElementById('btn-geralt').classList.toggle('active', tab === 'geralt');
   document.getElementById('btn-martina').classList.toggle('active', tab === 'martina');
 }
-function togM(i) {
-  document.getElementById('mb'+i).classList.toggle('open');
-  document.getElementById('mc'+i).classList.toggle('open');
-}
+// togM definito sotto
 // Apri automaticamente la card corrente di Martina
 document.addEventListener('DOMContentLoaded', function() {
   // Apri settimana 18 (indice 5 = settimana 18 nell'array Martina, 0-based)
@@ -916,6 +918,31 @@ document.addEventListener('DOMContentLoaded', function() {
   if (currentM) currentM.classList.add('open');
   if (currentMC) currentMC.classList.add('open');
 });
+</script>
+
+
+<script>
+const tette_names = ["🍈 Tette", "🫧 Booobies!", "🌸 Popis"];
+const pancia_names = ["🫃 Panciona", "🎈 Panza", "🌍 BIBELLY"];
+
+function randomLabel(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function togM(i) {
+  const body = document.getElementById('mb'+i);
+  const chev = document.getElementById('mc'+i);
+  body.classList.toggle('open');
+  chev.classList.toggle('open');
+
+  // Randomizza i titoli ogni volta che si apre
+  if (body.classList.contains('open')) {
+    const tetteEls = body.querySelectorAll('.label-tette');
+    const panciaEls = body.querySelectorAll('.label-pancia');
+    tetteEls.forEach(el => el.textContent = randomLabel(tette_names));
+    panciaEls.forEach(el => el.textContent = randomLabel(pancia_names));
+  }
+}
 </script>
 
 </body>
