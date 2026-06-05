@@ -1,3 +1,4 @@
+<!-- VERSIONE: 5 -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -11,6 +12,23 @@
 <title>Il Viaggio di Geralt ⚔️</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── BANNER AGGIORNAMENTO ─────────────────────── */
+#update-banner {
+  display: none;
+  background: linear-gradient(135deg, #1D9E75, #0d7a5a);
+  color: #fff;
+  border-radius: 12px;
+  padding: 11px 14px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(29,158,117,0.3);
+}
+#update-banner.visible { display: block; }
+#update-banner strong { display: block; font-size: 14px; margin-bottom: 2px; }
+#update-banner span { font-size: 11px; opacity: 0.85; }
 
 /* ── TEMA ─────────────────────────────────────── */
 :root {
@@ -214,6 +232,11 @@ document.head.appendChild(linkEl);
 <canvas id="stars-canvas"></canvas>
 <button class="theme-btn" onclick="toggleTheme()" id="theme-btn" title="Cambia tema">☀️</button>
 <h1>⚔️ Il Viaggio di Geralt 🌙</h1>
+<div id="update-banner" onclick="dismissBanner()">
+  <strong>✨ Tommaso ha aggiornato il calendario!</strong>
+  Tocca per segnare come visto 💚
+  <br><span id="update-detail"></span>
+</div>
 <div class="sub" id="sub-info">Caricamento...</div>
 
 <div class="progress-wrap"><div class="progress-fill" id="prog-fill"></div></div>
@@ -242,7 +265,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-past">1–13</div>
         <div class="body-title">
           <div class="body-wnum">1° trimestre</div>
-          <div class="body-wdates">26 gen – 24 apr</div>
+          <div class="body-wdates">26 gen – 24 apr 2026</div>
         </div>
         <span class="body-tag body-tag-past">passato</span>
         <span class="body-chev" id="mc0">▾</span>
@@ -274,7 +297,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-past">14</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 14</div>
-          <div class="body-wdates">25 apr – 1 mag</div>
+          <div class="body-wdates">27 apr – 3 mag 2026</div>
         </div>
         <span class="body-tag body-tag-past">passato</span>
         <span class="body-chev" id="mc1">▾</span>
@@ -306,7 +329,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-past">15</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 15</div>
-          <div class="body-wdates">2–8 mag</div>
+          <div class="body-wdates">4–10 mag 2026</div>
         </div>
         <span class="body-tag body-tag-past">passato</span>
         <span class="body-chev" id="mc2">▾</span>
@@ -338,7 +361,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-past">16</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 16</div>
-          <div class="body-wdates">9–15 mag</div>
+          <div class="body-wdates">11–17 mag 2026</div>
         </div>
         <span class="body-tag body-tag-past">passato</span>
         <span class="body-chev" id="mc3">▾</span>
@@ -370,7 +393,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-past">17</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 17</div>
-          <div class="body-wdates">16–22 mag</div>
+          <div class="body-wdates">18–24 mag 2026</div>
         </div>
         <span class="body-tag body-tag-past">passato</span>
         <span class="body-chev" id="mc4">▾</span>
@@ -402,7 +425,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-current">18</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 18</div>
-          <div class="body-wdates">23–31 mag</div>
+          <div class="body-wdates">25–31 mag 2026</div>
         </div>
         <span class="body-tag body-tag-current">← ora</span>
         <span class="body-chev" id="mc5">▾</span>
@@ -434,7 +457,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-future">19</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 19</div>
-          <div class="body-wdates">1–7 giu</div>
+          <div class="body-wdates">1–7 giu 2026</div>
         </div>
         <span class="body-tag body-tag-past">in arrivo</span>
         <span class="body-chev" id="mc6">▾</span>
@@ -466,7 +489,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-future">20</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 20 — metà! 🎉</div>
-          <div class="body-wdates">8–14 giu</div>
+          <div class="body-wdates">8–14 giu 2026</div>
         </div>
         <span class="body-tag body-tag-past">in arrivo</span>
         <span class="body-chev" id="mc7">▾</span>
@@ -498,7 +521,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-future">21</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 21</div>
-          <div class="body-wdates">15–21 giu</div>
+          <div class="body-wdates">15–21 giu 2026</div>
         </div>
         <span class="body-tag body-tag-past">in arrivo</span>
         <span class="body-chev" id="mc8">▾</span>
@@ -530,7 +553,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-future">22</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 22</div>
-          <div class="body-wdates">22–28 giu</div>
+          <div class="body-wdates">22–28 giu 2026</div>
         </div>
         <span class="body-tag body-tag-past">in arrivo</span>
         <span class="body-chev" id="mc9">▾</span>
@@ -562,7 +585,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-future">23</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 23</div>
-          <div class="body-wdates">29 giu – 5 lug</div>
+          <div class="body-wdates">29 giu – 5 lug 2026</div>
         </div>
         <span class="body-tag body-tag-past">in arrivo</span>
         <span class="body-chev" id="mc10">▾</span>
@@ -594,7 +617,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-future">24</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 24</div>
-          <div class="body-wdates">6–12 lug</div>
+          <div class="body-wdates">6–12 lug 2026</div>
         </div>
         <span class="body-tag body-tag-past">in arrivo</span>
         <span class="body-chev" id="mc11">▾</span>
@@ -626,7 +649,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-future">25</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 25</div>
-          <div class="body-wdates">13–19 lug</div>
+          <div class="body-wdates">13–19 lug 2026</div>
         </div>
         <span class="body-tag body-tag-past">in arrivo</span>
         <span class="body-chev" id="mc12">▾</span>
@@ -658,7 +681,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-future">26</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 26</div>
-          <div class="body-wdates">20–26 lug</div>
+          <div class="body-wdates">20–26 lug 2026</div>
         </div>
         <span class="body-tag body-tag-past">in arrivo</span>
         <span class="body-chev" id="mc13">▾</span>
@@ -690,7 +713,7 @@ document.head.appendChild(linkEl);
         <div class="body-badge body-badge-future">27</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 27 — fine 2° trim.</div>
-          <div class="body-wdates">27 lug – 2 ago</div>
+          <div class="body-wdates">27 lug – 2 ago 2026</div>
         </div>
         <span class="body-tag body-tag-past">in arrivo</span>
         <span class="body-chev" id="mc14">▾</span>
@@ -720,21 +743,21 @@ document.head.appendChild(linkEl);
 
 <div class="papa-section" id="papa-section">
   <div style="background:linear-gradient(135deg,#F59E0B22,#F59E0B11);border:1px dashed #F59E0B;border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:#F59E0B;text-align:center;">🔐 Sezione segreta — solo per Tommaso</div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(0)"><div class="papa-emoji">🤢</div><div class="papa-title"><div class="papa-wnum">1° trimestre — La Grande Impresa</div><div class="papa-wdates">26 gen – 24 apr</div></div><span class="papa-chev" id="pc0">▾</span></div><div class="papa-body" id="pb0"><p>Mentre Martina combatteva la nausea ogni mattina, tu eri lì. Stoico. A chiedere <strong>"stai bene?"</strong> ogni 10 minuti come se la risposta potesse cambiare.</p><p>Hai imparato che <strong>"non ho voglia di niente"</strong> significa in realtà che vuole una cosa precisa che non sa ancora qual è. Hai girato tre supermercati. <strong>Medaglia al valore.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(1)"><div class="papa-emoji">🛒</div><div class="papa-title"><div class="papa-wnum">Sett. 14 — Il Supermercato come Campo di Battaglia</div><div class="papa-wdates">25 apr – 1 mag</div></div><span class="papa-chev" id="pc1">▾</span></div><div class="papa-body" id="pb1"><p>Le voglie sono arrivate. Hai imparato che <strong>"vai tu"</strong> alle 22:30 di un mercoledì è la frase più romantica che una donna incinta possa dirti. Sei andato. Eri un eroe.</p><p>Per circa 8 minuti. Finché non si è scoperto che voleva quelle al formaggio, non alla paprika. <strong>Sei ripartito.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(2)"><div class="papa-emoji">💤</div><div class="papa-title"><div class="papa-wnum">Sett. 15 — Il Letto Inaccessibile</div><div class="papa-wdates">2–8 mag</div></div><span class="papa-chev" id="pc2">▾</span></div><div class="papa-body" id="pb2"><p>Attorno a Martina si è formato un <strong>sistema difensivo di cuscini</strong> degno di un castello medievale. Tu hai 15 cm di materasso. Sei felice di averli.</p><p>Esistono cuscini a forma di C, di U, di J. Ne avete comprati tre. <strong>Sei zen.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(3)"><div class="papa-emoji">📚</div><div class="papa-title"><div class="papa-wnum">Sett. 16 — L'Illuminazione Forzata</div><div class="papa-wdates">9–15 mag</div></div><span class="papa-chev" id="pc3">▾</span></div><div class="papa-body" id="pb3"><p>Hai letto più libri sulla gravidanza nell'ultima settimana che in tutta la vita. Sai cos'è il meconio. <strong>Non volevi saperlo.</strong></p><p>La cosa positiva: sai esattamente cosa fa Geralt lassù. La cosa negativa: <strong>sai esattamente cosa fa Geralt lassù.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(4)"><div class="papa-emoji">🏗️</div><div class="papa-title"><div class="papa-wnum">Sett. 17 — Il Grande Cantiere</div><div class="papa-wdates">16–22 mag</div></div><span class="papa-chev" id="pc4">▾</span></div><div class="papa-body" id="pb4"><p>È iniziata la <strong>fase di nidificazione</strong>. Martina vuole sistemare tutto. Hai montato un mobile IKEA in 3 ore. Le istruzioni dicevano 45 minuti. <strong>Erano bugiarde.</strong></p><p>"Dobbiamo pensare alla cameretta" significa "ho già deciso tutto, tu devi solo sollevare oggetti pesanti". <strong>Ruolo chiarissimo.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(5)"><div class="papa-emoji">👂</div><div class="papa-title"><div class="papa-wnum">Sett. 18 — La Prima Comunicazione</div><div class="papa-wdates">23–31 mag</div></div><span class="papa-chev" id="pc5">▾</span></div><div class="papa-body" id="pb5"><p>Geralt inizia a sentire. Martina ti ha chiesto di <strong>parlargli</strong>. Hai parlato alla pancia. Hai detto qualcosa tipo "ciao, sono papà, spero che tu non esca come me". <strong>Ottimo inizio.</strong></p><p>Hai quasi pianto. <strong>Non lo dirai mai a nessuno.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(6)"><div class="papa-emoji">🔭</div><div class="papa-title"><div class="papa-wnum">Sett. 19 — L'Ecografia della Verità</div><div class="papa-wdates">1–7 giu</div></div><span class="papa-chev" id="pc6">▾</span></div><div class="papa-body" id="pb6"><p>L'ecografia morfologica. Hai visto la testa, le mani, il cuore che batte. Hai realizzato che è reale. <strong>Dentro stavi urlando. Fuori eri dignitoso.</strong></p><p>Hai scoperto che piangere in sala ecografica è <strong>completamente accettabile</strong>. Tutti piangono. È una regola non scritta.</p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(7)"><div class="papa-emoji">🎉</div><div class="papa-title"><div class="papa-wnum">Sett. 20 — Metà strada, eroe</div><div class="papa-wdates">8–14 giu</div></div><span class="papa-chev" id="pc7">▾</span></div><div class="papa-body" id="pb7"><p>Metà gravidanza. <strong>Sei ancora vivo.</strong> Questo è già un risultato notevole.</p><p>Hai imparato a non dire <strong>"sei sicura che fa male così tanto?"</strong> più di una volta. Una volta è sufficiente per imparare. <strong>Sei un witcher anche tu.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(8)"><div class="papa-emoji">🦵</div><div class="papa-title"><div class="papa-wnum">Sett. 21 — I Calci di Geralt</div><div class="papa-wdates">15–21 giu</div></div><span class="papa-chev" id="pc8">▾</span></div><div class="papa-body" id="pb8"><p>Geralt calcia. Hai aspettato 20 minuti immobile per sentirlo. <strong>Ne è valsa la pena.</strong></p><p>I calci alle 3 di notte sono meno romantici. <strong>Geralt non rispetta gli orari.</strong> Si vede che è tuo figlio.</p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(9)"><div class="papa-emoji">💸</div><div class="papa-title"><div class="papa-wnum">Sett. 22 — Il Conto in Banca</div><div class="papa-wdates">22–28 giu</div></div><span class="papa-chev" id="pc9">▾</span></div><div class="papa-body" id="pb9"><p>Hai guardato il conto. Poi la lista delle cose da comprare. Poi di nuovo il conto. <strong>Poi hai chiuso tutto.</strong></p><p>Esistono passeggini che costano quanto un'utilitaria usata. Martina ne vuole uno. <strong>State ancora trattando.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(10)"><div class="papa-emoji">🧘</div><div class="papa-title"><div class="papa-wnum">Sett. 23 — La Pratica della Pazienza</div><div class="papa-wdates">29 giu – 5 lug</div></div><span class="papa-chev" id="pc10">▾</span></div><div class="papa-body" id="pb10"><p>Martina cambia idea su tutto tre volte al giorno. <strong>Tu annuisci.</strong> Hai raggiunto un livello di zen che nessun corso di meditazione avrebbe potuto darti.</p><p>Hai imparato che "cosa ne pensi?" non significa che vuole sapere cosa pensi. <strong>Lezione fondamentale.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(11)"><div class="papa-emoji">🩺</div><div class="papa-title"><div class="papa-wnum">Sett. 24 — Il Test del Glucosio</div><div class="papa-wdates">6–12 lug</div></div><span class="papa-chev" id="pc11">▾</span></div><div class="papa-body" id="pb11"><p>Martina a digiuno, soluzione dolcissima, 2 ore di attesa. <strong>Sei andato con lei.</strong> Hai portato uno snack per dopo (anche per te — diciamolo).</p><p>Non puoi fare nulla per far passare 2 ore in ospedale. Puoi però finire tutta la batteria su Instagram. <strong>Fatto.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(12)"><div class="papa-emoji">😴</div><div class="papa-title"><div class="papa-wnum">Sett. 25 — Il Sonno Perduto</div><div class="papa-wdates">13–19 lug</div></div><span class="papa-chev" id="pc12">▾</span></div><div class="papa-body" id="pb12"><p>Martina si sveglia ogni ora. Tu ogni volta che si sveglia lei. <strong>Nessuno dei due dorme.</strong> Questo è solo l'allenamento per dopo il parto.</p><p>Il letto ora è <strong>ufficialmente solo suo</strong>. Tu sei un ospite gradito. La stanchezza ti ha insegnato che il caffè è un sistema di sopravvivenza.</p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(13)"><div class="papa-emoji">🏋️</div><div class="papa-title"><div class="papa-wnum">Sett. 26 — L'Atletica della Quotidianità</div><div class="papa-wdates">20–26 lug</div></div><span class="papa-chev" id="pc13">▾</span></div><div class="papa-body" id="pb13"><p>Raccogliere qualcosa da terra per Martina è diventato il tuo sport principale. <strong>Hai sviluppato una tecnica.</strong></p><p>Hai anche imparato ad allacciarle le scarpe. Non era nel piano. <strong>Eccoti qua.</strong> Martina ti ha detto che sei il migliore. Il segreto del successo è abbassarsi spesso.</p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(14)"><div class="papa-emoji">🏁</div><div class="papa-title"><div class="papa-wnum">Sett. 27 — Fine 2° Trimestre, eroe</div><div class="papa-wdates">27 lug – 2 ago</div></div><span class="papa-chev" id="pc14">▾</span></div><div class="papa-body" id="pb14"><p>Sei arrivato alla fine del secondo trimestre. <strong>Sei cambiato.</strong> Sai montare mobili, aspettare, stare sveglio, e soprattutto sai quando stare zitto.</p><p>Mancano circa 13 settimane. <strong>Ce la fai. Ce la fate. ⚔️</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(0)"><div class="papa-emoji">🤢</div><div class="papa-title"><div class="papa-wnum">1° trimestre — La Grande Impresa</div><div class="papa-wdates">26 gen – 24 apr 2026</div></div><span class="papa-chev" id="pc0">▾</span></div><div class="papa-body" id="pb0"><p>Mentre Martina combatteva la nausea ogni mattina, tu eri lì. Stoico. A chiedere <strong>"stai bene?"</strong> ogni 10 minuti come se la risposta potesse cambiare.</p><p>Hai imparato che <strong>"non ho voglia di niente"</strong> significa in realtà che vuole una cosa precisa che non sa ancora qual è. Hai girato tre supermercati. <strong>Medaglia al valore.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(1)"><div class="papa-emoji">🛒</div><div class="papa-title"><div class="papa-wnum">Sett. 14 — Il Supermercato come Campo di Battaglia</div><div class="papa-wdates">27 apr – 3 mag 2026</div></div><span class="papa-chev" id="pc1">▾</span></div><div class="papa-body" id="pb1"><p>Le voglie sono arrivate. Hai imparato che <strong>"vai tu"</strong> alle 22:30 di un mercoledì è la frase più romantica che una donna incinta possa dirti. Sei andato. Eri un eroe.</p><p>Per circa 8 minuti. Finché non si è scoperto che voleva quelle al formaggio, non alla paprika. <strong>Sei ripartito.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(2)"><div class="papa-emoji">💤</div><div class="papa-title"><div class="papa-wnum">Sett. 15 — Il Letto Inaccessibile</div><div class="papa-wdates">4–10 mag 2026</div></div><span class="papa-chev" id="pc2">▾</span></div><div class="papa-body" id="pb2"><p>Attorno a Martina si è formato un <strong>sistema difensivo di cuscini</strong> degno di un castello medievale. Tu hai 15 cm di materasso. Sei felice di averli.</p><p>Esistono cuscini a forma di C, di U, di J. Ne avete comprati tre. <strong>Sei zen.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(3)"><div class="papa-emoji">📚</div><div class="papa-title"><div class="papa-wnum">Sett. 16 — L'Illuminazione Forzata</div><div class="papa-wdates">11–17 mag 2026</div></div><span class="papa-chev" id="pc3">▾</span></div><div class="papa-body" id="pb3"><p>Hai letto più libri sulla gravidanza nell'ultima settimana che in tutta la vita. Sai cos'è il meconio. <strong>Non volevi saperlo.</strong></p><p>La cosa positiva: sai esattamente cosa fa Geralt lassù. La cosa negativa: <strong>sai esattamente cosa fa Geralt lassù.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(4)"><div class="papa-emoji">🏗️</div><div class="papa-title"><div class="papa-wnum">Sett. 17 — Il Grande Cantiere</div><div class="papa-wdates">18–24 mag 2026</div></div><span class="papa-chev" id="pc4">▾</span></div><div class="papa-body" id="pb4"><p>È iniziata la <strong>fase di nidificazione</strong>. Martina vuole sistemare tutto. Hai montato un mobile IKEA in 3 ore. Le istruzioni dicevano 45 minuti. <strong>Erano bugiarde.</strong></p><p>"Dobbiamo pensare alla cameretta" significa "ho già deciso tutto, tu devi solo sollevare oggetti pesanti". <strong>Ruolo chiarissimo.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(5)"><div class="papa-emoji">👂</div><div class="papa-title"><div class="papa-wnum">Sett. 18 — La Prima Comunicazione</div><div class="papa-wdates">25–31 mag 2026</div></div><span class="papa-chev" id="pc5">▾</span></div><div class="papa-body" id="pb5"><p>Geralt inizia a sentire. Martina ti ha chiesto di <strong>parlargli</strong>. Hai parlato alla pancia. Hai detto qualcosa tipo "ciao, sono papà, spero che tu non esca come me". <strong>Ottimo inizio.</strong></p><p>Hai quasi pianto. <strong>Non lo dirai mai a nessuno.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(6)"><div class="papa-emoji">🔭</div><div class="papa-title"><div class="papa-wnum">Sett. 19 — L'Ecografia della Verità</div><div class="papa-wdates">1–7 giu 2026</div></div><span class="papa-chev" id="pc6">▾</span></div><div class="papa-body" id="pb6"><p>L'ecografia morfologica. Hai visto la testa, le mani, il cuore che batte. Hai realizzato che è reale. <strong>Dentro stavi urlando. Fuori eri dignitoso.</strong></p><p>Hai scoperto che piangere in sala ecografica è <strong>completamente accettabile</strong>. Tutti piangono. È una regola non scritta.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(7)"><div class="papa-emoji">🎉</div><div class="papa-title"><div class="papa-wnum">Sett. 20 — Metà strada, eroe</div><div class="papa-wdates">8–14 giu 2026</div></div><span class="papa-chev" id="pc7">▾</span></div><div class="papa-body" id="pb7"><p>Metà gravidanza. <strong>Sei ancora vivo.</strong> Questo è già un risultato notevole.</p><p>Hai imparato a non dire <strong>"sei sicura che fa male così tanto?"</strong> più di una volta. Una volta è sufficiente per imparare. <strong>Sei un witcher anche tu.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(8)"><div class="papa-emoji">🦵</div><div class="papa-title"><div class="papa-wnum">Sett. 21 — I Calci di Geralt</div><div class="papa-wdates">15–21 giu 2026</div></div><span class="papa-chev" id="pc8">▾</span></div><div class="papa-body" id="pb8"><p>Geralt calcia. Hai aspettato 20 minuti immobile per sentirlo. <strong>Ne è valsa la pena.</strong></p><p>I calci alle 3 di notte sono meno romantici. <strong>Geralt non rispetta gli orari.</strong> Si vede che è tuo figlio.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(9)"><div class="papa-emoji">💸</div><div class="papa-title"><div class="papa-wnum">Sett. 22 — Il Conto in Banca</div><div class="papa-wdates">22–28 giu 2026</div></div><span class="papa-chev" id="pc9">▾</span></div><div class="papa-body" id="pb9"><p>Hai guardato il conto. Poi la lista delle cose da comprare. Poi di nuovo il conto. <strong>Poi hai chiuso tutto.</strong></p><p>Esistono passeggini che costano quanto un'utilitaria usata. Martina ne vuole uno. <strong>State ancora trattando.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(10)"><div class="papa-emoji">🧘</div><div class="papa-title"><div class="papa-wnum">Sett. 23 — La Pratica della Pazienza</div><div class="papa-wdates">29 giu – 5 lug 2026</div></div><span class="papa-chev" id="pc10">▾</span></div><div class="papa-body" id="pb10"><p>Martina cambia idea su tutto tre volte al giorno. <strong>Tu annuisci.</strong> Hai raggiunto un livello di zen che nessun corso di meditazione avrebbe potuto darti.</p><p>Hai imparato che "cosa ne pensi?" non significa che vuole sapere cosa pensi. <strong>Lezione fondamentale.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(11)"><div class="papa-emoji">🩺</div><div class="papa-title"><div class="papa-wnum">Sett. 24 — Il Test del Glucosio</div><div class="papa-wdates">6–12 lug 2026</div></div><span class="papa-chev" id="pc11">▾</span></div><div class="papa-body" id="pb11"><p>Martina a digiuno, soluzione dolcissima, 2 ore di attesa. <strong>Sei andato con lei.</strong> Hai portato uno snack per dopo (anche per te — diciamolo).</p><p>Non puoi fare nulla per far passare 2 ore in ospedale. Puoi però finire tutta la batteria su Instagram. <strong>Fatto.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(12)"><div class="papa-emoji">😴</div><div class="papa-title"><div class="papa-wnum">Sett. 25 — Il Sonno Perduto</div><div class="papa-wdates">13–19 lug 2026</div></div><span class="papa-chev" id="pc12">▾</span></div><div class="papa-body" id="pb12"><p>Martina si sveglia ogni ora. Tu ogni volta che si sveglia lei. <strong>Nessuno dei due dorme.</strong> Questo è solo l'allenamento per dopo il parto.</p><p>Il letto ora è <strong>ufficialmente solo suo</strong>. Tu sei un ospite gradito. La stanchezza ti ha insegnato che il caffè è un sistema di sopravvivenza.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(13)"><div class="papa-emoji">🏋️</div><div class="papa-title"><div class="papa-wnum">Sett. 26 — L'Atletica della Quotidianità</div><div class="papa-wdates">20–26 lug 2026</div></div><span class="papa-chev" id="pc13">▾</span></div><div class="papa-body" id="pb13"><p>Raccogliere qualcosa da terra per Martina è diventato il tuo sport principale. <strong>Hai sviluppato una tecnica.</strong></p><p>Hai anche imparato ad allacciarle le scarpe. Non era nel piano. <strong>Eccoti qua.</strong> Martina ti ha detto che sei il migliore. Il segreto del successo è abbassarsi spesso.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(14)"><div class="papa-emoji">🏁</div><div class="papa-title"><div class="papa-wnum">Sett. 27 — Fine 2° Trimestre, eroe</div><div class="papa-wdates">27 lug – 2 ago 2026</div></div><span class="papa-chev" id="pc14">▾</span></div><div class="papa-body" id="pb14"><p>Sei arrivato alla fine del secondo trimestre. <strong>Sei cambiato.</strong> Sai montare mobili, aspettare, stare sveglio, e soprattutto sai quando stare zitto.</p><p>Mancano circa 13 settimane. <strong>Ce la fai. Ce la fate. ⚔️</strong></p></div></div>
 </div>
 
 <p style="font-size:11px;color:#ccc;margin-top:20px;line-height:1.6;">⚠️ Anche i witcher consultano gli esperti — queste info sono indicative e non sostituiscono il parere del ginecologo, il vero stregone di Martina 🧙‍♂️</p>
@@ -803,67 +826,67 @@ const svgs = {
 };
 
 const weeks = [
-  { n:"1–13", label:"La profezia si avvera — il witcher è concepito 🌙", dates:"26 gen – 24 apr 2025", state:"past", summary:true,
+  { n:"1–13", label:"La profezia si avvera — il witcher è concepito 🌙", dates:"26 gen – 24 apr 2026 2026", state:"past", summary:true,
     baby:["La scintilla del destino scocca l'11 feb — Geralt si insedia nel Grembo 🌙","Si forma il guscio magico: sacco amniotico e placenta","Il grande incantesimo dell'organogenesi: cuore, cervello, vasi — tutto prende forma","Le zampe del futuro witcher iniziano ad allungarsi ⚔️","Fine 1° capitolo: ~6,5 cm, ~73 g — ha già testa e occhi da witcher","Il battito del cuore risuona nell'eco dalla sett. 7–8 🫀"],
     mama:["La Sorceress affronta nausea, stanchezza e seno sensibile con coraggio 💜","Frequente stimolo a urinare — il corpo si adatta al nuovo ospite","Sbalzi d'umore: la magia ormonale ha i suoi costi 🔮","Ecografia del 1° capitolo (11–13+6 sett.) — prima visione di Geralt","Test combinato o NIPT: le rune del destino genetico"],
     exam:["Ecografia 1° trimestre","Test combinato / NIPT","Esami del sangue di routine","Prima visita ostetrica/ginecologica"],
     note:[] },
-  { n:14, label:"Settimana 14", dates:"25 apr – 1 mag 2025", state:"past", svgKey:14,
+  { n:14, label:"Settimana 14", dates:"27 apr – 3 mag 2026", state:"past", svgKey:14,
     baby:["Lungo ~8–9 cm, pesa ~45 g","Il viso si definisce: orecchie, naso e occhi in posizione definitiva","Movimenti volontari (ancora non percepibili)","Sesso anatomicamente differenziato (difficile da vedere all'eco)","Inizia a inghiottire liquido amniotico"],
     mama:["La nausea di solito inizia ad attenuarsi","Energia in aumento — spesso il periodo migliore","La pancia inizia a diventare visibile","Possibile comparsa della linea nigra"],
     exam:[], note:[] },
-  { n:15, label:"Settimana 15", dates:"2–8 mag 2025", state:"past", svgKey:15,
+  { n:15, label:"Settimana 15", dates:"4–10 mag 2026", state:"past", svgKey:15,
     baby:["Lungo ~10 cm, pesa ~70 g","Si muove molto (calci, rotazioni) — ancora non percepibili","Inizia a percepire i suoni","Si forma la lanugine (peluria sottile protettiva)","Iniziano a svilupparsi le sopracciglia"],
     mama:["Seno che continua a crescere","Possibile fastidio ai legamenti rotondi","Spesso miglioramento dell'umore"],
     exam:[], note:[] },
-  { n:16, label:"Settimana 16", dates:"9–15 mag 2025", state:"past", svgKey:16,
+  { n:16, label:"Settimana 16", dates:"11–17 mag 2026", state:"past", svgKey:16,
     baby:["Lungo ~11–12 cm, pesa ~100 g","Le gambe sono ora proporzionate alle braccia","Inizia a produrre meconio (prime feci fetali)","Può stringere il pugno, fa smorfie","Il cuore pompa ~23 litri di sangue al giorno"],
     mama:["L'utero è percepibile sotto l'ombelico","Le prime mamme di solito non sentono ancora movimenti","Possibile congestione nasale (effetto ormonale)"],
     exam:["Eventuale amniocentesi (se indicata, 15–17 sett.)"], note:[] },
-  { n:17, label:"Settimana 17", dates:"16–22 mag 2025", state:"past", svgKey:17,
+  { n:17, label:"Settimana 17", dates:"18–24 mag 2026", state:"past", svgKey:17,
     baby:["Lungo ~13 cm, pesa ~150 g — una cipolla da witcher 🧅","Si forma lo scudo di grasso sotto la pelle","Le sue rune digitali (impronte) prendono forma","Le orecchie si affinano — ascolta già il mondo esterno 👂","Le cartilagini si forgiano in ossa — l'armatura cresce 🛡️"],
     mama:["La pancia rivela il segreto — impossibile nascondere il witcher 🌙","Possibili prime sensazioni: farfalle o bollicine — Geralt dice ciao 🦋","Il grembo sale verso l'ombelico, il trono di Geralt si espande","La Sorceress affronta sciatalgia e lombalgie — non senza fatica 💜"],
     exam:[], note:[] },
-  { n:18, label:"Settimana 18 — il witcher si desta ⚔️", dates:"23–31 mag 2025", state:"current", svgKey:18,
+  { n:18, label:"Settimana 18 — il witcher si desta ⚔️", dates:"25–31 mag 2026", state:"current", svgKey:18,
     baby:["Lungo ~14 cm, pesa ~190 g — una patata dolce da witcher 🍠","Le papille gustative si svegliano — assaggia già il liquido del destino","Il cervello forgia i sensi: olfatto, gusto, tatto, udito, vista 🧠","Le gambe si allungano — si prepara a camminare sul Continente","Il corpo si definisce in ogni dettaglio 🗡️"],
     mama:["Martina inizia a sentire il witcher muoversi — i primi calci del destino 🦋","La schiena della Sorceress regge il peso della profezia — postura!","Possibile formicolio alle mani — il corpo si trasforma 🔮","Il seno cresce: Martina si prepara ad accogliere Geralt 💜"],
     exam:[], note:["Siete a 18+3 oggi — Geralt sta scalciando! Martina potrebbe sentire le prime farfalline 🦋"] },
-  { n:19, label:"Settimana 19 — la vernice del destino 🛡️", dates:"1–7 giu 2025", state:"future", svgKey:19,
+  { n:19, label:"Settimana 19 — la vernice del destino 🛡️", dates:"1–7 giu 2026 2026", state:"future", svgKey:19,
     baby:["Lungo ~15 cm, pesa ~200 g","Il feto si ricopre di vernice caseosa (sostanza protettiva)","Naso, labbra e orecchie ora ben definite","Inizia a sognare (movimenti oculari REM)","Femmine: si forma il canale vaginale"],
     mama:["I movimenti fetali sempre più riconoscibili","La linea nigra è spesso ben visibile","Possibile dolore al basso ventre per la distensione dei legamenti"],
     exam:["★ Ecografia morfologica (19–21 sett.) — prenotare subito se non fatto!"],
     note:["La grande visione — l'oracolo studia ogni dettaglio del piccolo witcher, dalla testa ai piedini 👣 Il destino ha già scritto il suo nome?"] },
-  { n:20, label:"Settimana 20 — metà del cammino! 🗺️", dates:"8–14 giu 2025", state:"future", svgKey:20,
+  { n:20, label:"Settimana 20 — metà del cammino! 🗺️", dates:"8–14 giu 2026 2026", state:"future", svgKey:20,
     baby:["Lungo ~25,5 cm testa–piedi, pesa ~330 g — una banana da witcher 🍌","I calci sono potenti — il witcher si allena per il Continente ⚔️","Le orecchie forgiate: sente le voci di Martina e Tommaso 👂","La placenta, scudo magico, è completa e veglia su Geralt 🛡️"],
     mama:["Metà gravidanza: 20 settimane su 40","Possibile gonfiore a piedi e caviglie","L'utero è all'altezza dell'ombelico","Il respiro può essere più corto"],
     exam:["★ Ecografia morfologica (se non fatta a sett. 19)"],
     note:["Metà del cammino! Il piccolo witcher ha già percorso metà della strada verso di voi 🗺️✨ Il Continente lo aspetta."] },
-  { n:21, label:"Settimana 21 — il witcher forgia le sue armi 🗡️", dates:"15–21 giu 2025", state:"future", svgKey:21,
+  { n:21, label:"Settimana 21 — il witcher forgia le sue armi 🗡️", dates:"15–21 giu 2026 2026", state:"future", svgKey:21,
     baby:["Lungo ~26 cm, pesa ~360–400 g","Compaiono i primi capelli e la lanugine","Si formano midollo osseo, milza; i polmoni si sviluppano","Le impronte digitali si completano","Il cervello sviluppa le prime circonvoluzioni"],
     mama:["Possibili contrazioni di Braxton-Hicks (normali, indolori)","Crampi più frequenti","Possibile anemia fisiologica — ferro fondamentale","Il colostro può iniziare a gocciolare — dal 4°-5° mese è più comune"],
     exam:[], note:[] },
-  { n:22, label:"Settimana 22", dates:"22–28 giu 2025", state:"future", svgKey:22,
+  { n:22, label:"Settimana 22", dates:"22–28 giu 2026 2026", state:"future", svgKey:22,
     baby:["Lungo ~27–29 cm, pesa ~430–480 g","Capelli su tutto il cuoio capelluto; compaiono le sopracciglia","Inizia la produzione di grasso bruno (produce calore)","Maschi: i testicoli iniziano a scendere","È un 'neonato in miniatura'"],
     mama:["Pancia impossibile da nascondere","Possibile aumento dell'appetito","Schiena e fianchi possono dolere di più"],
     exam:[], note:[] },
-  { n:23, label:"Settimana 23", dates:"29 giu – 5 lug 2025", state:"future", svgKey:23,
+  { n:23, label:"Settimana 23", dates:"29 giu – 5 lug 2026 2026", state:"future", svgKey:23,
     baby:["Lungo ~28–30 cm, pesa ~500 g","Movimenti oculari rapidi (REM) — sogna!","I polmoni si allenano con movimenti respiratori","La pelle è ancora rugosa e rossastra"],
     mama:["Il centro di gravità si sposta — andatura cambia","Stanchezza più frequente nel pomeriggio","Possibile reflusso e bruciore di stomaco"],
     exam:[], note:[] },
-  { n:24, label:"Settimana 24 — il witcher sente il mondo 🌍", dates:"6–12 lug 2025", state:"future", svgKey:24,
+  { n:24, label:"Settimana 24 — il witcher sente il mondo 🌍", dates:"6–12 lug 2026 2026", state:"future", svgKey:24,
     baby:["Lungo ~30–31 cm, pesa ~600–700 g","Il cervello cresce molto rapidamente","I polmoni producono i primi accenni di surfattante","Sente e reagisce ai suoni esterni","Movimenti molto forti e percepibili"],
     mama:["Test OGTT (curva glicemica) tra 24–28 sett.","Il fundus uterino si misura regolarmente","Possibile gonfiore alle mani e ai piedi"],
     exam:["★ Curva glicemica OGTT — tra 24 e 28 sett., per escludere diabete gestazionale"],
     note:["Anche i grandi witcher si preparano con cura — questo test protegge Martina e il piccolo Geralt. Nessuna magia, solo scienza 🔬"] },
-  { n:25, label:"Settimana 25", dates:"13–19 lug 2025", state:"future", svgKey:25,
+  { n:25, label:"Settimana 25", dates:"13–19 lug 2026 2026", state:"future", svgKey:25,
     baby:["Lungo ~32–34 cm, pesa ~680–750 g","Le mani sono pienamente sviluppate — stringe forte","Il grasso sottocutaneo inizia ad accumularsi","I capillari si formano dando colore roseo alla pelle"],
     mama:["Possibile comparsa di smagliature","Respirazione più difficile — polmoni compressi","Possibile pressione al basso ventre e pelvi"],
     exam:[], note:[] },
-  { n:26, label:"Settimana 26", dates:"20–26 lug 2025", state:"future", svgKey:26,
+  { n:26, label:"Settimana 26", dates:"20–26 lug 2026 2026", state:"future", svgKey:26,
     baby:["Lungo ~35 cm, pesa ~800–910 g","I polmoni producono surfattante in quantità crescente","Le palpebre iniziano ad aprirsi e chiudersi","Distingue luci e ombre","Battito cardiaco ~140 bpm"],
     mama:["Fine imminente del 2° trimestre","Baricentro spostato — possibile difficoltà di equilibrio","Contrazioni di Braxton-Hicks più frequenti"],
     exam:["★ Curva glicemica se non ancora eseguita"], note:[] },
-  { n:27, label:"Settimana 27 — il witcher è quasi pronto 🌕", dates:"27 lug – 2 ago 2025", state:"future", svgKey:27,
+  { n:27, label:"Settimana 27 — il witcher è quasi pronto 🌕", dates:"27 lug – 2 ago 2026 2026", state:"future", svgKey:27,
     baby:["Lungo ~36–37 cm, pesa ~900–1.050 g","Il sistema nervoso matura ulteriormente","La pelle diventa più liscia con l'accumulo di adipe","Dorme e si sveglia in cicli regolari","Può succhiare il pollice"],
     mama:["Fine del 2° trimestre — dalla sett. 28 inizia il 3°","Possibile stitichezza e bruciori di stomaco più intensi","Gonfiore agli arti inferiori spesso più marcato la sera"],
     exam:[],
@@ -1053,6 +1076,27 @@ function togM(i) {
   if (document.body.classList.contains('dark')) start();
 })();
 
+// ── BANNER AGGIORNAMENTO ─────────────────────────
+(function() {
+  const VERSIONE_CORRENTE = 5;
+  const vistaDa = parseInt(localStorage.getItem('versione_vista') || '0');
+  if (vistaDa < VERSIONE_CORRENTE) {
+    const banner = document.getElementById('update-banner');
+    const detail = document.getElementById('update-detail');
+    if (banner) {
+      banner.classList.add('visible');
+      if (detail) detail.textContent = 'Versione ' + VERSIONE_CORRENTE;
+    }
+  }
+})();
+
+function dismissBanner() {
+  const VERSIONE_CORRENTE = 5;
+  localStorage.setItem('versione_vista', VERSIONE_CORRENTE);
+  const banner = document.getElementById('update-banner');
+  if (banner) banner.classList.remove('visible');
+}
+
 // ── TAB ──────────────────────────────────────────
 function switchTab(tab) {
   document.getElementById('tab-geralt').classList.toggle('active', tab === 'geralt');
@@ -1082,7 +1126,7 @@ function toggleTheme() {
 
 // ── PROGRESS BAR ─────────────────────────────────
 (function() {
-  const DUM = new Date(2025, 0, 26);
+  const DUM = new Date(2026, 0, 26);
   const oggi = new Date();
   oggi.setHours(0,0,0,0);
   const giorni = Math.floor((oggi - DUM) / 86400000);
@@ -1111,7 +1155,7 @@ function toggleTheme() {
   if (sub) sub.textContent =
     '🌿 Il piccolo witcher è in viaggio · ' + oggiStr +
     ' · Settimana ' + sett + '+' + gg +
-    ' · Arrivo previsto: ~2 nov 2025 ⚔️';
+    ' · Arrivo previsto: ~2 nov 2026 ⚔️';
 
   // Usato da render() per stato card
   window._settimanaCorrente = sett + 1;
