@@ -11,102 +11,179 @@
 <title>Il Viaggio di Geralt ⚔️</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: system-ui, sans-serif; background: #f9f9f7; color: #1a1a1a; padding: 14px; max-width: 780px; margin: auto; }
+
+/* ── TEMA ─────────────────────────────────────── */
+:root {
+  --bg: #E8F4FD;          /* azzurro pastello chiaro */
+  --bg2: #D6EAF8;         /* azzurro un po' più scuro per card */
+  --bg3: #EBF5FB;         /* sfondo secondario */
+  --card: #F0F8FF;        /* card background */
+  --border: #B8D9F0;
+  --text: #1a2a38;
+  --text2: #4a6274;
+  --text3: #8aA8BE;
+  --c-green: #1D9E75;
+  --c-green-light: #E1F5EE;
+  --c-purple: #EEEDFE;
+  --c-purple-text: #3C3489;
+  --c-amber: #FAEEDA;
+  --c-amber-text: #633806;
+  --c-coral: #FAECE7;
+  --c-coral-text: #4A1B0C;
+  --c-blue: #EFF6FF;
+  --c-blue-text: #1e3a8a;
+}
+body.dark {
+  --bg: #0f1923;
+  --bg2: #162130;
+  --bg3: #1a2940;
+  --card: #1e2f42;
+  --border: #2a3f55;
+  --text: #e8f4fd;
+  --text2: #8aaabe;
+  --text3: #4a6274;
+  --c-green-light: #0d3326;
+  --c-purple: #1e1b4b;
+  --c-purple-text: #a5b4fc;
+  --c-amber: #2d1f00;
+  --c-amber-text: #fbbf24;
+  --c-coral: #2d0f00;
+  --c-coral-text: #fca5a5;
+  --c-blue: #0f1e38;
+  --c-blue-text: #93c5fd;
+}
+
+body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 14px; max-width: 780px; margin: auto; transition: background 0.3s, color 0.3s; }
 h1 { font-size: 18px; font-weight: 500; margin-bottom: 3px; }
-.sub { font-size: 12px; color: #888; margin-bottom: 12px; line-height: 1.5; }
-.progress-wrap { background: #e8e8e4; border-radius: 99px; height: 7px; margin: 10px 0 3px; }
-.progress-fill { background: #1D9E75; height: 7px; border-radius: 99px; width: 0%; transition: width 0.6s ease; }
-.progress-labels { display: flex; justify-content: space-between; font-size: 10px; color: #bbb; margin-bottom: 14px; }
+.sub { font-size: 12px; color: var(--text2); margin-bottom: 12px; line-height: 1.5; }
+.progress-wrap { background: var(--bg2); border-radius: 99px; height: 7px; margin: 10px 0 3px; position: relative; overflow: hidden; }
+.progress-fill { background: var(--c-green); height: 7px; border-radius: 99px; width: 0%; transition: width 1s cubic-bezier(.4,0,.2,1); }
+.progress-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--text3); margin-bottom: 14px; }
 .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-.legend-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: #666; }
+.legend-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--text2); }
 .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink:0; }
 
 /* CARD */
-.card { background: #fff; border: 1px solid #e4e4de; border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
-.card.current { border: 2px solid #1D9E75; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+.card.current { border: 2px solid var(--c-green); }
 .card.past { opacity: 0.72; }
 
 /* HEADER: fruit icon left, info right */
 .week-header { display: flex; align-items: stretch; cursor: pointer; min-height: 64px; }
 
-.fruit-col { width: 64px; min-width: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 4px; border-right: 1px solid #f0f0eb; gap: 2px; background: #fafaf8; }
+.fruit-col { width: 64px; min-width: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 4px; border-right: 1px solid var(--border); gap: 2px; background: var(--bg3); }
 .fruit-col svg { display: block; }
-.fruit-label { font-size: 9px; color: #bbb; text-align: center; line-height: 1.2; max-width: 58px; }
+.fruit-label { font-size: 9px; color: var(--text3); text-align: center; line-height: 1.2; max-width: 58px; }
 
 .info-col { flex: 1; display: flex; align-items: center; gap: 8px; padding: 10px 10px 10px 10px; min-width: 0; }
 .badge { width: 30px; height: 30px; min-width: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
-.badge-past { background: #f0f0ec; color: #999; }
+.badge-past { background: var(--bg2); color: var(--text3); }
 .badge-current { background: #E1F5EE; color: #085041; }
 .badge-future { background: #EEEDFE; color: #3C3489; }
 
 .wtitle { flex: 1; min-width: 0; }
 .wnum { font-size: 13px; font-weight: 500; line-height: 1.3; }
-.wdates { font-size: 10px; color: #bbb; margin-top: 2px; }
+.wdates { font-size: 10px; color: var(--text3); margin-top: 2px; }
 
 .tag { font-size: 9px; padding: 2px 7px; border-radius: 99px; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
-.tag-past { background: #f0f0ec; color: #aaa; }
+.tag-past { background: var(--bg2); color: var(--text3); }
 .tag-current { background: #E1F5EE; color: #085041; }
 .tag-future { background: #EEEDFE; color: #3C3489; }
-.chev { font-size: 14px; color: #ccc; transition: transform 0.2s; flex-shrink: 0; }
+.chev { font-size: 14px; color: var(--text3); transition: transform 0.2s; flex-shrink: 0; }
 .chev.open { transform: rotate(180deg); }
 
 /* BODY */
-.week-body { border-top: 1px solid #f0f0eb; padding: 12px 12px; display: none; }
+.week-body { border-top: 1px solid var(--border); padding: 12px 12px; display: none; }
 .week-body.open { display: block; }
 
 /* Size banner inside body */
-.size-banner { display: flex; align-items: center; gap: 12px; background: #f7f7f4; border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; }
-.size-info .size-big { font-size: 16px; font-weight: 600; }
-.size-info .size-like { font-size: 12px; color: #888; margin-top: 2px; }
-.size-info .size-weight { font-size: 11px; color: #bbb; margin-top: 1px; }
+.size-banner { display: flex; align-items: center; gap: 12px; background: var(--bg3); border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; }
+.size-info .size-big { font-size: 16px; font-weight: 600; color: var(--text); }
+.size-info .size-like { font-size: 12px; color: var(--text2); margin-top: 2px; }
+.size-info .size-weight { font-size: 11px; color: var(--text3); margin-top: 1px; }
 
-.slabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #ccc; margin-bottom: 5px; margin-top: 11px; }
+.slabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text3); margin-bottom: 5px; margin-top: 11px; }
 .slabel:first-child { margin-top: 0; }
 .pills { display: flex; flex-wrap: wrap; gap: 5px; }
 .pill { font-size: 11px; padding: 4px 9px; border-radius: 99px; line-height: 1.4; }
-.p-baby { background: #E1F5EE; color: #085041; }
-.p-mama { background: #EEEDFE; color: #3C3489; }
-.p-exam { background: #FAEEDA; color: #633806; }
-.p-note { background: #FAECE7; color: #4A1B0C; }
-.p-cur { background: #EFF6FF; color: #1e3a8a; }
+.p-baby { background: var(--c-green-light); color: #085041; }
+.p-mama { background: var(--c-purple); color: var(--c-purple-text); }
+.p-exam { background: var(--c-amber); color: var(--c-amber-text); }
+.p-note { background: var(--c-coral); color: var(--c-coral-text); }
+.p-cur { background: var(--c-blue); color: var(--c-blue-text); }
 
-.summary-box { background: #f5f5f1; border-radius: 8px; padding: 10px 12px; }
+.summary-box { background: var(--bg2); border-radius: 8px; padding: 10px 12px; }
 .summary-box p { font-size: 12px; color: #555; line-height: 1.6; margin-bottom: 7px; }
 .summary-box p:last-child { margin-bottom: 0; }
-.summary-box strong { color: #1a1a1a; font-weight: 600; }
+.summary-box strong { color: var(--text); font-weight: 600; }
 
 .tab-bar { display: flex; gap: 0; margin-bottom: 14px; border-radius: 10px; overflow: hidden; border: 1px solid #e4e4de; }
-.tab-btn { flex: 1; padding: 10px 6px; font-size: 12px; font-weight: 600; border: none; background: #f5f5f1; color: #aaa; cursor: pointer; transition: all 0.2s; }
+.tab-btn { flex: 1; padding: 10px 6px; font-size: 12px; font-weight: 600; border: none; background: var(--bg2); color: var(--text3); cursor: pointer; transition: all 0.2s; }
 .tab-btn.active { background: #1D9E75; color: #fff; }
 .tab-section { display: none; }
 .tab-section.active { display: block; }
 
 /* Card corpo Martina */
-.body-card { background: #fff; border: 1px solid #e4e4de; border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+.body-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
 .body-card.current-m { border: 2px solid #A78BFA; }
 .body-card.past-m { opacity: 0.72; }
 .body-header { display: flex; align-items: center; cursor: pointer; min-height: 60px; }
-.body-emoji-col { width: 64px; min-width: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 4px; border-right: 1px solid #f0f0eb; gap: 2px; background: #faf8ff; font-size: 28px; }
+.body-emoji-col { width: 64px; min-width: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 4px; border-right: 1px solid var(--border); gap: 2px; background: var(--bg3); font-size: 28px; }
 .body-info-col { flex: 1; display: flex; align-items: center; gap: 8px; padding: 10px 10px; min-width: 0; }
 .body-badge { width: 30px; height: 30px; min-width: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
-.body-badge-past { background: #f0f0ec; color: #999; }
+.body-badge-past { background: var(--bg2); color: var(--text3); }
 .body-badge-current { background: #EEEDFE; color: #3C3489; }
 .body-badge-future { background: #EEEDFE; color: #3C3489; opacity: 0.6; }
 .body-title { flex: 1; min-width: 0; }
-.body-wnum { font-size: 13px; font-weight: 500; }
-.body-wdates { font-size: 10px; color: #bbb; margin-top: 2px; }
+.body-wnum { font-size: 13px; font-weight: 500; color: var(--text); }
+.body-wdates { font-size: 10px; color: var(--text3); margin-top: 2px; }
 .body-tag { font-size: 9px; padding: 2px 7px; border-radius: 99px; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
-.body-tag-past { background: #f0f0ec; color: #aaa; }
+.body-tag-past { background: var(--bg2); color: var(--text3); }
 .body-tag-current { background: #EEEDFE; color: #3C3489; }
-.body-chev { font-size: 14px; color: #ccc; transition: transform 0.2s; flex-shrink: 0; }
+.body-chev { font-size: 14px; color: var(--text3); transition: transform 0.2s; flex-shrink: 0; }
 .body-chev.open { transform: rotate(180deg); }
-.body-body { border-top: 1px solid #f0f0eb; padding: 12px; display: none; }
+.body-body { border-top: 1px solid var(--border); padding: 12px; display: none; }
 .body-body.open { display: block; }
 .body-section { margin-bottom: 10px; }
 .body-section:last-child { margin-bottom: 0; }
-.body-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #ccc; margin-bottom: 4px; }
-.body-section-text { font-size: 12px; color: #444; line-height: 1.6; }
-.body-section-text strong { color: #1a1a1a; font-weight: 600; }
+.body-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text3); margin-bottom: 4px; }
+.body-section-text { font-size: 12px; color: var(--text2); line-height: 1.6; }
+.body-section-text strong { color: var(--text); font-weight: 600; }
+
+/* ── STELLE NOTTURNE ──────────────────────────── */
+#stars-canvas {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+body.dark #stars-canvas { display: block; }
+body > *:not(#stars-canvas) { position: relative; z-index: 1; }
+
+/* ── TEMA TOGGLE ──────────────────────────────── */
+.theme-btn { position: fixed; top: 14px; right: 14px; z-index: 100; background: var(--card); border: 1px solid var(--border); border-radius: 50%; width: 38px; height: 38px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+
+/* ── SEZIONE SEGRETA PAPÀ ─────────────────────── */
+.papa-section { display: none; }
+.papa-section.visible { display: block; }
+.papa-card { background: var(--card); border: 2px dashed #F59E0B; border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+.papa-header { display: flex; align-items: center; gap: 8px; padding: 12px; cursor: pointer; }
+.papa-emoji { font-size: 24px; width: 40px; text-align: center; }
+.papa-title { flex: 1; }
+.papa-wnum { font-size: 13px; font-weight: 600; color: #F59E0B; }
+.papa-wdates { font-size: 10px; color: var(--text3); margin-top: 2px; }
+.papa-chev { font-size: 14px; color: var(--text3); transition: transform 0.2s; }
+.papa-chev.open { transform: rotate(180deg); }
+.papa-body { border-top: 1px dashed #F59E0B; padding: 12px; display: none; }
+.papa-body.open { display: block; }
+.papa-body p { font-size: 12px; color: var(--text2); line-height: 1.7; margin-bottom: 8px; }
+.papa-body p:last-child { margin-bottom: 0; }
+.papa-body strong { color: #F59E0B; font-weight: 600; }
+.papa-unlock { text-align: center; font-size: 11px; color: var(--text3); margin: 8px 0 4px; font-style: italic; }
+.tab-bar { display: flex; gap: 0; margin-bottom: 14px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+
 </style>
 
 <script>
@@ -134,6 +211,8 @@ document.head.appendChild(linkEl);
 </head>
 <body>
 
+<canvas id="stars-canvas"></canvas>
+<button class="theme-btn" onclick="toggleTheme()" id="theme-btn" title="Cambia tema">☀️</button>
 <h1>⚔️ Il Viaggio di Geralt 🌙</h1>
 <div class="sub" id="sub-info">Caricamento...</div>
 
@@ -149,7 +228,7 @@ document.head.appendChild(linkEl);
 
 <div class="tab-bar">
   <button class="tab-btn active" id="btn-geralt" onclick="switchTab('geralt')">⚔️ Il piccolo Geralt</button>
-  <button class="tab-btn" id="btn-martina" onclick="switchTab('martina')">🔮 Il corpo di Martina!</button>
+  <button class="tab-btn" id="btn-martina" onclick="onMartinaTap()">🔮 Il corpo di Martina!</button>
 </div>
 <div class="tab-section active" id="tab-geralt">
   <div id="cards"></div>
@@ -240,7 +319,7 @@ document.head.appendChild(linkEl);
       </div>
       <div class="body-section">
         <div class="body-section-title label-tette">🍈 Tette</div>
-        <div class="body-section-text">Continua a crescere. Possibili primi capillari visibili sulla superficie.</div>
+        <div class="body-section-text">Continua a crescere. Possibili primi capillari visibili sulla superficie. Dalla settimana 15 può iniziare internamente la produzione di colostro — raramente fuoriesce ancora.</div>
       </div>
       <div class="body-section">
         <div class="body-section-title">✨ Pelle</div>
@@ -272,7 +351,7 @@ document.head.appendChild(linkEl);
       </div>
       <div class="body-section">
         <div class="body-section-title label-tette">🍈 Tette</div>
-        <div class="body-section-text">Può iniziare a perdere qualche goccia di colostro (liquido giallognolo) — normalissimo, può succedere già da ora.</div>
+        <div class="body-section-text">Intorno alla 16ª settimana alcune donne notano le prime gocce di colostro (liquido giallognolo denso). È variabile: molte non lo vedranno ancora — entrambe le situazioni sono normali.</div>
       </div>
       <div class="body-section">
         <div class="body-section-title">✨ Pelle</div>
@@ -336,7 +415,7 @@ document.head.appendChild(linkEl);
       </div>
       <div class="body-section">
         <div class="body-section-title label-tette">🍈 Tette</div>
-        <div class="body-section-text">Potrebbe aver preso fino a 2 taglie in più. L'areola è scura e più grande. Possibile gocciolamento di colostro.</div>
+        <div class="body-section-text">Potrebbe aver preso fino a 2 taglie in più. L'areola è scura e più grande. Il colostro può gocciolare ma è ancora poco comune — del tutto normale se non accade.</div>
       </div>
       <div class="body-section">
         <div class="body-section-title">✨ Pelle</div>
@@ -432,7 +511,7 @@ document.head.appendChild(linkEl);
       </div>
       <div class="body-section">
         <div class="body-section-title label-tette">🍈 Tette</div>
-        <div class="body-section-text">Può iniziare a produrre colostro più regolarmente. I capillari sulla superficie sono visibili.</div>
+        <div class="body-section-text">Dal 5° mese il colostro può iniziare a gocciolare più regolarmente — normale. I capillari sulla superficie sono visibili.</div>
       </div>
       <div class="body-section">
         <div class="body-section-title">✨ Pelle</div>
@@ -560,7 +639,7 @@ document.head.appendChild(linkEl);
       </div>
       <div class="body-section">
         <div class="body-section-title label-tette">🍈 Tette</div>
-        <div class="body-section-text">Gocciolamento di colostro più frequente — utile un disco assorbilatte.</div>
+        <div class="body-section-text">Il colostro può gocciolare con più frequenza avvicinandosi al 3° trimestre — un disco assorbilatte nel reggiseno può tornare utile.</div>
       </div>
       <div class="body-section">
         <div class="body-section-title">✨ Pelle</div>
@@ -639,45 +718,29 @@ document.head.appendChild(linkEl);
 </div>
 
 
+<div class="papa-section" id="papa-section">
+  <div style="background:linear-gradient(135deg,#F59E0B22,#F59E0B11);border:1px dashed #F59E0B;border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:#F59E0B;text-align:center;">🔐 Sezione segreta — solo per Tommaso</div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(0)"><div class="papa-emoji">🤢</div><div class="papa-title"><div class="papa-wnum">1° trimestre — La Grande Impresa</div><div class="papa-wdates">26 gen – 24 apr</div></div><span class="papa-chev" id="pc0">▾</span></div><div class="papa-body" id="pb0"><p>Mentre Martina combatteva la nausea ogni mattina, tu eri lì. Stoico. A chiedere <strong>"stai bene?"</strong> ogni 10 minuti come se la risposta potesse cambiare.</p><p>Hai imparato che <strong>"non ho voglia di niente"</strong> significa in realtà che vuole una cosa precisa che non sa ancora qual è. Hai girato tre supermercati. <strong>Medaglia al valore.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(1)"><div class="papa-emoji">🛒</div><div class="papa-title"><div class="papa-wnum">Sett. 14 — Il Supermercato come Campo di Battaglia</div><div class="papa-wdates">25 apr – 1 mag</div></div><span class="papa-chev" id="pc1">▾</span></div><div class="papa-body" id="pb1"><p>Le voglie sono arrivate. Hai imparato che <strong>"vai tu"</strong> alle 22:30 di un mercoledì è la frase più romantica che una donna incinta possa dirti. Sei andato. Eri un eroe.</p><p>Per circa 8 minuti. Finché non si è scoperto che voleva quelle al formaggio, non alla paprika. <strong>Sei ripartito.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(2)"><div class="papa-emoji">💤</div><div class="papa-title"><div class="papa-wnum">Sett. 15 — Il Letto Inaccessibile</div><div class="papa-wdates">2–8 mag</div></div><span class="papa-chev" id="pc2">▾</span></div><div class="papa-body" id="pb2"><p>Attorno a Martina si è formato un <strong>sistema difensivo di cuscini</strong> degno di un castello medievale. Tu hai 15 cm di materasso. Sei felice di averli.</p><p>Esistono cuscini a forma di C, di U, di J. Ne avete comprati tre. <strong>Sei zen.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(3)"><div class="papa-emoji">📚</div><div class="papa-title"><div class="papa-wnum">Sett. 16 — L'Illuminazione Forzata</div><div class="papa-wdates">9–15 mag</div></div><span class="papa-chev" id="pc3">▾</span></div><div class="papa-body" id="pb3"><p>Hai letto più libri sulla gravidanza nell'ultima settimana che in tutta la vita. Sai cos'è il meconio. <strong>Non volevi saperlo.</strong></p><p>La cosa positiva: sai esattamente cosa fa Geralt lassù. La cosa negativa: <strong>sai esattamente cosa fa Geralt lassù.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(4)"><div class="papa-emoji">🏗️</div><div class="papa-title"><div class="papa-wnum">Sett. 17 — Il Grande Cantiere</div><div class="papa-wdates">16–22 mag</div></div><span class="papa-chev" id="pc4">▾</span></div><div class="papa-body" id="pb4"><p>È iniziata la <strong>fase di nidificazione</strong>. Martina vuole sistemare tutto. Hai montato un mobile IKEA in 3 ore. Le istruzioni dicevano 45 minuti. <strong>Erano bugiarde.</strong></p><p>"Dobbiamo pensare alla cameretta" significa "ho già deciso tutto, tu devi solo sollevare oggetti pesanti". <strong>Ruolo chiarissimo.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(5)"><div class="papa-emoji">👂</div><div class="papa-title"><div class="papa-wnum">Sett. 18 — La Prima Comunicazione</div><div class="papa-wdates">23–31 mag</div></div><span class="papa-chev" id="pc5">▾</span></div><div class="papa-body" id="pb5"><p>Geralt inizia a sentire. Martina ti ha chiesto di <strong>parlargli</strong>. Hai parlato alla pancia. Hai detto qualcosa tipo "ciao, sono papà, spero che tu non esca come me". <strong>Ottimo inizio.</strong></p><p>Hai quasi pianto. <strong>Non lo dirai mai a nessuno.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(6)"><div class="papa-emoji">🔭</div><div class="papa-title"><div class="papa-wnum">Sett. 19 — L'Ecografia della Verità</div><div class="papa-wdates">1–7 giu</div></div><span class="papa-chev" id="pc6">▾</span></div><div class="papa-body" id="pb6"><p>L'ecografia morfologica. Hai visto la testa, le mani, il cuore che batte. Hai realizzato che è reale. <strong>Dentro stavi urlando. Fuori eri dignitoso.</strong></p><p>Hai scoperto che piangere in sala ecografica è <strong>completamente accettabile</strong>. Tutti piangono. È una regola non scritta.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(7)"><div class="papa-emoji">🎉</div><div class="papa-title"><div class="papa-wnum">Sett. 20 — Metà strada, eroe</div><div class="papa-wdates">8–14 giu</div></div><span class="papa-chev" id="pc7">▾</span></div><div class="papa-body" id="pb7"><p>Metà gravidanza. <strong>Sei ancora vivo.</strong> Questo è già un risultato notevole.</p><p>Hai imparato a non dire <strong>"sei sicura che fa male così tanto?"</strong> più di una volta. Una volta è sufficiente per imparare. <strong>Sei un witcher anche tu.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(8)"><div class="papa-emoji">🦵</div><div class="papa-title"><div class="papa-wnum">Sett. 21 — I Calci di Geralt</div><div class="papa-wdates">15–21 giu</div></div><span class="papa-chev" id="pc8">▾</span></div><div class="papa-body" id="pb8"><p>Geralt calcia. Hai aspettato 20 minuti immobile per sentirlo. <strong>Ne è valsa la pena.</strong></p><p>I calci alle 3 di notte sono meno romantici. <strong>Geralt non rispetta gli orari.</strong> Si vede che è tuo figlio.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(9)"><div class="papa-emoji">💸</div><div class="papa-title"><div class="papa-wnum">Sett. 22 — Il Conto in Banca</div><div class="papa-wdates">22–28 giu</div></div><span class="papa-chev" id="pc9">▾</span></div><div class="papa-body" id="pb9"><p>Hai guardato il conto. Poi la lista delle cose da comprare. Poi di nuovo il conto. <strong>Poi hai chiuso tutto.</strong></p><p>Esistono passeggini che costano quanto un'utilitaria usata. Martina ne vuole uno. <strong>State ancora trattando.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(10)"><div class="papa-emoji">🧘</div><div class="papa-title"><div class="papa-wnum">Sett. 23 — La Pratica della Pazienza</div><div class="papa-wdates">29 giu – 5 lug</div></div><span class="papa-chev" id="pc10">▾</span></div><div class="papa-body" id="pb10"><p>Martina cambia idea su tutto tre volte al giorno. <strong>Tu annuisci.</strong> Hai raggiunto un livello di zen che nessun corso di meditazione avrebbe potuto darti.</p><p>Hai imparato che "cosa ne pensi?" non significa che vuole sapere cosa pensi. <strong>Lezione fondamentale.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(11)"><div class="papa-emoji">🩺</div><div class="papa-title"><div class="papa-wnum">Sett. 24 — Il Test del Glucosio</div><div class="papa-wdates">6–12 lug</div></div><span class="papa-chev" id="pc11">▾</span></div><div class="papa-body" id="pb11"><p>Martina a digiuno, soluzione dolcissima, 2 ore di attesa. <strong>Sei andato con lei.</strong> Hai portato uno snack per dopo (anche per te — diciamolo).</p><p>Non puoi fare nulla per far passare 2 ore in ospedale. Puoi però finire tutta la batteria su Instagram. <strong>Fatto.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(12)"><div class="papa-emoji">😴</div><div class="papa-title"><div class="papa-wnum">Sett. 25 — Il Sonno Perduto</div><div class="papa-wdates">13–19 lug</div></div><span class="papa-chev" id="pc12">▾</span></div><div class="papa-body" id="pb12"><p>Martina si sveglia ogni ora. Tu ogni volta che si sveglia lei. <strong>Nessuno dei due dorme.</strong> Questo è solo l'allenamento per dopo il parto.</p><p>Il letto ora è <strong>ufficialmente solo suo</strong>. Tu sei un ospite gradito. La stanchezza ti ha insegnato che il caffè è un sistema di sopravvivenza.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(13)"><div class="papa-emoji">🏋️</div><div class="papa-title"><div class="papa-wnum">Sett. 26 — L'Atletica della Quotidianità</div><div class="papa-wdates">20–26 lug</div></div><span class="papa-chev" id="pc13">▾</span></div><div class="papa-body" id="pb13"><p>Raccogliere qualcosa da terra per Martina è diventato il tuo sport principale. <strong>Hai sviluppato una tecnica.</strong></p><p>Hai anche imparato ad allacciarle le scarpe. Non era nel piano. <strong>Eccoti qua.</strong> Martina ti ha detto che sei il migliore. Il segreto del successo è abbassarsi spesso.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(14)"><div class="papa-emoji">🏁</div><div class="papa-title"><div class="papa-wnum">Sett. 27 — Fine 2° Trimestre, eroe</div><div class="papa-wdates">27 lug – 2 ago</div></div><span class="papa-chev" id="pc14">▾</span></div><div class="papa-body" id="pb14"><p>Sei arrivato alla fine del secondo trimestre. <strong>Sei cambiato.</strong> Sai montare mobili, aspettare, stare sveglio, e soprattutto sai quando stare zitto.</p><p>Mancano circa 13 settimane. <strong>Ce la fai. Ce la fate. ⚔️</strong></p></div></div>
+</div>
+
 <p style="font-size:11px;color:#ccc;margin-top:20px;line-height:1.6;">⚠️ Anche i witcher consultano gli esperti — queste info sono indicative e non sostituiscono il parere del ginecologo, il vero stregone di Martina 🧙‍♂️</p>
 
 
-<script>
-// ── Calcolo automatico data ──────────────────────────────────
-document.addEventListener('DOMContentLoaded', function() {
-  const DUM = new Date(2025, 0, 26); // 26 gennaio 2025
-  const oggi = new Date();
-  oggi.setHours(0,0,0,0);
 
-  const msPerDay = 86400000;
-  const giorniTotali = Math.floor((oggi - DUM) / msPerDay);
-  const settimane = Math.floor(giorniTotali / 7);
-  const giorni = giorniTotali % 7;
-  const settimanaCorrente = settimane + 1; // la settimana IN CORSO
-
-  // Progress bar
-  const pct = Math.min(100, Math.round((giorniTotali / 280) * 100));
-  const fillEl = document.getElementById('prog-fill');
-  if (fillEl) {
-    fillEl.style.width = '0%';
-    setTimeout(() => { fillEl.style.width = pct + '%'; }, 100);
-  }
-  const labelEl = document.getElementById('prog-label');
-  if (labelEl) labelEl.textContent = '⚔️ ' + settimane + ' lune';
-
-  // Subtitle
-  const mesi = ['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
-  const oggiStr = oggi.getDate() + ' ' + mesi[oggi.getMonth()] + ' ' + oggi.getFullYear();
-  const subEl = document.getElementById('sub-info');
-  if (subEl) subEl.textContent =
-    '🌿 Il piccolo witcher è in viaggio dal 26 gen 2025 · ' + oggiStr +
-    ' · ' + settimane + ' lune + ' + giorni + ' albe · Il destino chiama il ~2 nov 2025';
-
-  window._settimanaCorrente = settimanaCorrente;
-  window._settimaneCompiute = settimane;
-  window._giorni = giorni;
-});
-</script>
 
 <script>
 const svgs = {
@@ -777,7 +840,7 @@ const weeks = [
     note:["Metà del cammino! Il piccolo witcher ha già percorso metà della strada verso di voi 🗺️✨ Il Continente lo aspetta."] },
   { n:21, label:"Settimana 21 — il witcher forgia le sue armi 🗡️", dates:"15–21 giu 2025", state:"future", svgKey:21,
     baby:["Lungo ~26 cm, pesa ~360–400 g","Compaiono i primi capelli e la lanugine","Si formano midollo osseo, milza; i polmoni si sviluppano","Le impronte digitali si completano","Il cervello sviluppa le prime circonvoluzioni"],
-    mama:["Possibili contrazioni di Braxton-Hicks (normali, indolori)","Crampi più frequenti","Possibile anemia fisiologica — ferro fondamentale","Le mammelle possono iniziare a produrre colostro"],
+    mama:["Possibili contrazioni di Braxton-Hicks (normali, indolori)","Crampi più frequenti","Possibile anemia fisiologica — ferro fondamentale","Il colostro può iniziare a gocciolare — dal 4°-5° mese è più comune"],
     exam:[], note:[] },
   { n:22, label:"Settimana 22", dates:"22–28 giu 2025", state:"future", svgKey:22,
     baby:["Lungo ~27–29 cm, pesa ~430–480 g","Capelli su tutto il cuoio capelluto; compaiono le sopracciglia","Inizia la produzione di grasso bruno (produce calore)","Maschi: i testicoli iniziano a scendere","È un 'neonato in miniatura'"],
@@ -900,45 +963,190 @@ render();
 </script>
 
 <script>
+const tette_names = ["🍈 Tette", "🫧 Booobies!", "🌸 Popis"];
+const pancia_names = ["🫃 Panciona", "🎈 Panza", "🌍 BIBELLY"];
+function rndLabel(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
+function togM(i) {
+  const body = document.getElementById('mb'+i);
+  const chev = document.getElementById('mc'+i);
+  body.classList.toggle('open');
+  chev.classList.toggle('open');
+  if (body.classList.contains('open')) {
+    body.querySelectorAll('.label-tette').forEach(el => el.textContent = rndLabel(tette_names));
+    body.querySelectorAll('.label-pancia').forEach(el => el.textContent = rndLabel(pancia_names));
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// ── STELLE NOTTURNE ──────────────────────────────
+(function() {
+  const canvas = document.getElementById('stars-canvas');
+  const ctx = canvas.getContext('2d');
+  let stars = [], raf;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function initStars() {
+    stars = [];
+    const n = Math.floor((canvas.width * canvas.height) / 5000);
+    for (let i = 0; i < n; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.2 + 0.2,
+        alpha: Math.random() * 0.7 + 0.2,
+        speed: Math.random() * 0.008 + 0.003,
+        phase: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const s of stars) {
+      const a = s.alpha * (0.5 + 0.5 * Math.sin(t * s.speed + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${a.toFixed(3)})`;
+      ctx.fill();
+    }
+    raf = requestAnimationFrame(draw);
+  }
+
+  function start() {
+    if (raf) return;
+    resize();
+    initStars();
+    raf = requestAnimationFrame(draw);
+  }
+
+  function stop() {
+    if (raf) { cancelAnimationFrame(raf); raf = null; }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  window.addEventListener('resize', () => {
+    if (document.body.classList.contains('dark')) { resize(); initStars(); }
+  });
+
+  // Osserva cambio classe dark sul body
+  const observer = new MutationObserver(() => {
+    if (document.body.classList.contains('dark')) start(); else stop();
+  });
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+  // Avvio se già dark al caricamento
+  if (document.body.classList.contains('dark')) start();
+})();
+
+// ── TAB ──────────────────────────────────────────
 function switchTab(tab) {
   document.getElementById('tab-geralt').classList.toggle('active', tab === 'geralt');
   document.getElementById('tab-martina').classList.toggle('active', tab === 'martina');
   document.getElementById('btn-geralt').classList.toggle('active', tab === 'geralt');
   document.getElementById('btn-martina').classList.toggle('active', tab === 'martina');
 }
-// togM definito sotto
-// Apri automaticamente la card corrente di Martina
-document.addEventListener('DOMContentLoaded', function() {
-  // Apri settimana 18 (indice 5 = settimana 18 nell'array Martina, 0-based)
-  const currentM = document.getElementById('mb5');
-  const currentMC = document.getElementById('mc5');
-  if (currentM) currentM.classList.add('open');
-  if (currentMC) currentMC.classList.add('open');
-});
-</script>
 
-
-<script>
-const tette_names = ["🍈 Tette", "🫧 Booobies!", "🌸 Popis"];
-const pancia_names = ["🫃 Panciona", "🎈 Panza", "🌍 BIBELLY"];
-
-function randomLabel(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+// ── TEMA ──────────────────────────────────────────
+function applyTheme(dark) {
+  document.body.classList.toggle('dark', dark);
+  document.getElementById('theme-btn').textContent = dark ? '☀️' : '🌙';
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
 }
 
-function togM(i) {
-  const body = document.getElementById('mb'+i);
-  const chev = document.getElementById('mc'+i);
-  body.classList.toggle('open');
-  chev.classList.toggle('open');
+function toggleTheme() {
+  applyTheme(!document.body.classList.contains('dark'));
+}
 
-  // Randomizza i titoli ogni volta che si apre
-  if (body.classList.contains('open')) {
-    const tetteEls = body.querySelectorAll('.label-tette');
-    const panciaEls = body.querySelectorAll('.label-pancia');
-    tetteEls.forEach(el => el.textContent = randomLabel(tette_names));
-    panciaEls.forEach(el => el.textContent = randomLabel(pancia_names));
+// Tema automatico dal sistema, override da localStorage
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    applyTheme(saved === 'dark');
+  } else {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(prefersDark);
   }
+  // Ascolta cambi sistema
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem('theme')) applyTheme(e.matches);
+  });
+})();
+
+// ── PROGRESS BAR ─────────────────────────────────
+(function() {
+  const DUM = new Date(2025, 0, 26);
+  const oggi = new Date();
+  oggi.setHours(0,0,0,0);
+  const giorni = Math.floor((oggi - DUM) / 86400000);
+  const sett = Math.floor(giorni / 7);
+  const gg = giorni % 7;
+  const pct = Math.min(100, Math.round((giorni / 280) * 100));
+
+  // Progress bar: setTimeout garantisce che il DOM sia painted prima dell'animazione
+  const fill = document.getElementById('prog-fill');
+  if (fill) {
+    fill.style.width = '0%';
+    fill.style.transition = 'none';
+    setTimeout(() => {
+      fill.style.transition = 'width 1s cubic-bezier(.4,0,.2,1)';
+      fill.style.width = pct + '%';
+    }, 80);
+  }
+
+  // Label e subtitle
+  const label = document.getElementById('prog-label');
+  if (label) label.textContent = '⚔️ sett. ' + sett + '+' + gg;
+
+  const mesi = ['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
+  const oggiStr = oggi.getDate() + ' ' + mesi[oggi.getMonth()] + ' ' + oggi.getFullYear();
+  const sub = document.getElementById('sub-info');
+  if (sub) sub.textContent =
+    '🌿 Il piccolo witcher è in viaggio · ' + oggiStr +
+    ' · Settimana ' + sett + '+' + gg +
+    ' · Arrivo previsto: ~2 nov 2025 ⚔️';
+
+  // Usato da render() per stato card
+  window._settimanaCorrente = sett + 1;
+})();
+
+// ── SEZIONE SEGRETA PAPÀ — 3 tap sul bottone Martina ──
+let martinaTaps = 0, martinaTimer = null;
+function onMartinaTap() {
+  switchTab('martina');
+  martinaTaps++;
+  clearTimeout(martinaTimer);
+  martinaTimer = setTimeout(() => { martinaTaps = 0; }, 800);
+  if (martinaTaps >= 3) {
+    martinaTaps = 0;
+    const s = document.getElementById('papa-section');
+    if (s) {
+      s.classList.toggle('visible');
+      if (s.classList.contains('visible')) {
+        s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }
+}
+
+// ── togP per sezione papa ─────────────────────────
+function togP(i) {
+  document.getElementById('pb'+i).classList.toggle('open');
+  document.getElementById('pc'+i).classList.toggle('open');
 }
 </script>
 
