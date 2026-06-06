@@ -180,8 +180,28 @@ h1 { font-size: 18px; font-weight: 500; margin-bottom: 3px; }
 body.dark #stars-canvas { display: block; }
 body > *:not(#stars-canvas) { position: relative; z-index: 1; }
 
-/* ── TEMA TOGGLE ──────────────────────────────── */
-.theme-btn { position: fixed; top: 14px; right: 14px; z-index: 100; background: var(--card); border: 1px solid var(--border); border-radius: 50%; width: 38px; height: 38px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+/* ── TEMA TOGGLE — nel header ─────────────────── */
+.theme-btn { background: var(--card); border: 1px solid var(--border); border-radius: 50%; width: 34px; height: 34px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 4px rgba(0,0,0,0.10); flex-shrink: 0; }
+
+/* ── HEADER ROW ───────────────────────────────── */
+.page-header { display: flex; align-items: center; gap: 10px; margin-bottom: 3px; }
+.page-header h1 { flex: 1; margin: 0; }
+
+/* ── COLLASSA PASSATO ─────────────────────────── */
+.past-collapsed { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; cursor: pointer; display: flex; align-items: center; gap: 10px; user-select: none; }
+.past-collapsed:hover { border-color: var(--c-green); }
+.past-collapsed-icon { font-size: 18px; }
+.past-collapsed-text { flex: 1; font-size: 12px; color: var(--text2); }
+.past-collapsed-text strong { color: var(--text); font-size: 13px; display: block; }
+.past-collapsed-chev { font-size: 13px; color: var(--text3); transition: transform 0.2s; }
+.past-collapsed-chev.open { transform: rotate(180deg); }
+#past-group { display: none; }
+#past-group.open { display: block; }
+
+/* ── FAB OGGI ─────────────────────────────────── */
+#fab-oggi { position: fixed; bottom: 20px; right: 16px; z-index: 200; background: var(--c-green); color: #fff; border: none; border-radius: 24px; padding: 10px 16px; font-size: 12px; font-weight: 600; cursor: pointer; box-shadow: 0 3px 12px rgba(29,158,117,0.4); display: flex; align-items: center; gap: 6px; transition: opacity 0.3s, transform 0.2s; }
+#fab-oggi:active { transform: scale(0.95); }
+#fab-oggi.hidden { opacity: 0; pointer-events: none; }
 
 /* ── SEZIONE SEGRETA PAPÀ ─────────────────────── */
 .papa-section { display: none; }
@@ -230,8 +250,10 @@ document.head.appendChild(linkEl);
 <body>
 
 <canvas id="stars-canvas"></canvas>
-<button class="theme-btn" onclick="toggleTheme()" id="theme-btn" title="Cambia tema">☀️</button>
-<h1>⚔️ Il Viaggio di Geralt 🌙</h1>
+<div class="page-header">
+  <h1>⚔️ Il Viaggio di Geralt 🌙</h1>
+  <button class="theme-btn" onclick="toggleTheme()" id="theme-btn" title="Cambia tema">☀️</button>
+</div>
 <div id="update-banner" onclick="dismissBanner()">
   <strong>✨ Tommaso ha aggiornato il calendario!</strong>
   Tocca per segnare come visto 💚
@@ -256,6 +278,7 @@ document.head.appendChild(linkEl);
 <div class="tab-section active" id="tab-geralt">
   <div id="cards"></div>
 </div>
+<button id="fab-oggi" onclick="scrollToOggi()" title="Vai alla settimana corrente">⚔️ Vai a oggi</button>
 
 <div class="tab-section" id="tab-martina">
   <div class="body-card past-m">
@@ -1555,23 +1578,29 @@ const art = {"limone":"una","mela":"una","pera":"una","cipolla":"una","patata do
 
 function render() {
   const cont = document.getElementById('cards');
-  weeks.forEach((w, i) => {
-    const card = document.createElement('div');
-    card.className = 'card ' + w.state;
-    // Calcola stato dinamicamente
+  let pastCards = [], currentIdx = -1;
+
+  // Prima passata: costruiamo tutte le card e identifichiamo passate/corrente
+  const built = weeks.map((w, i) => {
     let dynState = w.state;
     if (typeof w.n === 'number' && window._settimanaCorrente !== undefined) {
       if (w.n < window._settimanaCorrente) dynState = 'past';
       else if (w.n === window._settimanaCorrente) dynState = 'current';
       else dynState = 'future';
     }
+    if (w.summary) dynState = 'past'; // 1° trim sempre passato
+
+    const isCurrentCard = (dynState === 'current');
+    if (isCurrentCard) currentIdx = i;
+
+    const card = document.createElement('div');
+    card.className = 'card ' + dynState;
+    if (isCurrentCard) card.id = 'card-oggi';
+
     const bCl = dynState==='current'?'badge-current':dynState==='past'?'badge-past':'badge-future';
     const tCl = dynState==='current'?'tag-current':dynState==='past'?'tag-past':'tag-future';
     const tLb = dynState==='current'?'⚔️ siete qui!':dynState==='past'?'passato':'in arrivo';
-    // Apri automaticamente la card corrente
-    const isCurrentCard = (dynState === 'current');
 
-    // fruit panel
     let fruitCol = '';
     if (w.summary) {
       fruitCol = `<div class="fruit-col"><svg width="36" height="36" viewBox="0 0 36 36"><text x="18" y="26" text-anchor="middle" font-size="22">🌱</text></svg><span class="fruit-label">1° trim.</span></div>`;
@@ -1580,7 +1609,6 @@ function render() {
       fruitCol = `<div class="fruit-col">${s.mini}<span class="fruit-label">${s.cm}</span></div>`;
     }
 
-    // body
     let bodyHTML = '';
     if (w.summary) {
       bodyHTML = `<div class="week-body" id="b${i}">
@@ -1626,13 +1654,71 @@ function render() {
           <span class="chev" id="c${i}">▾</span>
         </div>
       </div>${bodyHTML}`;
-    cont.appendChild(card);
 
     if (isCurrentCard) {
-      document.getElementById('b'+i).classList.add('open');
-      document.getElementById('c'+i).classList.add('open');
+      // NON accedere al DOM qui — la card non è ancora appendata
+      // lo facciamo dopo l'appendChild
+    }
+
+    return { card, dynState, isCurrentCard, idx: i };
+  });
+
+  // Separa passate da corrente/future
+  const pastItems = built.filter(x => x.dynState === 'past');
+  const restItems = built.filter(x => x.dynState !== 'past');
+
+  // Blocco collassato per le passate
+  if (pastItems.length > 0) {
+    const pastGroup = document.createElement('div');
+    pastGroup.id = 'past-group';
+
+    const toggle = document.createElement('div');
+    toggle.className = 'past-collapsed';
+    toggle.innerHTML = `<span class="past-collapsed-icon">✅</span>
+      <span class="past-collapsed-text">
+        <strong>Settimane passate (${pastItems.length})</strong>
+        Tocca per espandere la storia di Geralt
+      </span>
+      <span class="past-collapsed-chev" id="past-chev">▾</span>`;
+    toggle.onclick = () => {
+      pastGroup.classList.toggle('open');
+      document.getElementById('past-chev').classList.toggle('open');
+    };
+
+    cont.appendChild(toggle);
+    pastItems.forEach(x => pastGroup.appendChild(x.card));
+    cont.appendChild(pastGroup);
+  }
+
+  // Corrente e future — appendiamo al DOM
+  restItems.forEach(x => cont.appendChild(x.card));
+
+  // ORA le card sono nel DOM: apri la corrente e aggiorna le classi
+  built.forEach(x => {
+    if (x.isCurrentCard) {
+      const b = document.getElementById('b' + x.idx);
+      const c = document.getElementById('c' + x.idx);
+      if (b) b.classList.add('open');
+      if (c) c.classList.add('open');
     }
   });
+
+  // Auto-scroll alla settimana corrente (con ritardo per animazione progress bar)
+  setTimeout(() => {
+    const oggi = document.getElementById('card-oggi');
+    if (oggi) oggi.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 400);
+
+  // FAB: mostra/nascondi in base a se card-oggi è visibile
+  const fab = document.getElementById('fab-oggi');
+  if (fab) {
+    const obs = new IntersectionObserver(entries => {
+      fab.classList.toggle('hidden', entries[0].isIntersecting);
+    }, { threshold: 0.5 });
+    const oggi = document.getElementById('card-oggi');
+    if (oggi) obs.observe(oggi);
+    else fab.classList.add('hidden'); // nessuna corrente (post-parto?)
+  }
 }
 
 function tog(i) {
@@ -1842,6 +1928,12 @@ function onMartinaTap() {
 function togP(i) {
   document.getElementById('pb'+i).classList.toggle('open');
   document.getElementById('pc'+i).classList.toggle('open');
+}
+
+// ── FAB scroll a oggi ─────────────────────────────
+function scrollToOggi() {
+  const el = document.getElementById('card-oggi');
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 </script>
 
