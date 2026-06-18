@@ -1,4 +1,4 @@
-<!-- VERSIONE: 10 -->
+<!-- VERSIONE: 11 -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -195,8 +195,8 @@ body > *:not(#stars-canvas) { position: relative; z-index: 1; }
 .past-collapsed-text strong { color: var(--text); font-size: 13px; display: block; }
 .past-collapsed-chev { font-size: 13px; color: var(--text3); transition: transform 0.2s; }
 .past-collapsed-chev.open { transform: rotate(180deg); }
-#past-group { display: none; }
-#past-group.open { display: block; }
+#past-group, .past-group { display: none; }
+#past-group.open, .past-group.open { display: block; }
 
 /* ── FAB OGGI ─────────────────────────────────── */
 #fab-oggi { position: fixed; bottom: 20px; right: 16px; z-index: 200; background: var(--c-green); color: #fff; border: none; border-radius: 24px; padding: 10px 16px; font-size: 12px; font-weight: 600; cursor: pointer; box-shadow: 0 3px 12px rgba(29,158,117,0.4); display: flex; align-items: center; gap: 6px; transition: opacity 0.3s, transform 0.2s; }
@@ -281,7 +281,7 @@ document.head.appendChild(linkEl);
 <button id="fab-oggi" onclick="scrollToOggi()" title="Vai alla settimana corrente">⚔️ Vai a oggi</button>
 
 <div class="tab-section" id="tab-martina">
-  <div class="body-card past-m">
+  <div class="body-card" data-wmin="1" data-wmax="13">
     <div class="body-header" onclick="togM(0)">
       <div class="body-emoji-col">🌱</div>
       <div class="body-info-col">
@@ -313,7 +313,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card past-m">
+  <div class="body-card" data-wmin="14" data-wmax="14">
     <div class="body-header" onclick="togM(1)">
       <div class="body-emoji-col">🫧</div>
       <div class="body-info-col">
@@ -345,7 +345,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card past-m">
+  <div class="body-card" data-wmin="15" data-wmax="15">
     <div class="body-header" onclick="togM(2)">
       <div class="body-emoji-col">✨</div>
       <div class="body-info-col">
@@ -377,7 +377,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card past-m">
+  <div class="body-card" data-wmin="16" data-wmax="16">
     <div class="body-header" onclick="togM(3)">
       <div class="body-emoji-col">🌸</div>
       <div class="body-info-col">
@@ -409,7 +409,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card past-m">
+  <div class="body-card" data-wmin="17" data-wmax="17">
     <div class="body-header" onclick="togM(4)">
       <div class="body-emoji-col">🌙</div>
       <div class="body-info-col">
@@ -441,16 +441,16 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card current-m">
+  <div class="body-card" data-wmin="18" data-wmax="18">
     <div class="body-header" onclick="togM(5)">
       <div class="body-emoji-col">⚔️</div>
       <div class="body-info-col">
-        <div class="body-badge body-badge-current">18</div>
+        <div class="body-badge">18</div>
         <div class="body-title">
           <div class="body-wnum">Settimana 18</div>
           <div class="body-wdates">1–7 giu 2026</div>
         </div>
-        <span class="body-tag body-tag-current">← ora</span>
+        
         <span class="body-chev" id="mc5">▾</span>
       </div>
     </div>
@@ -473,7 +473,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="19" data-wmax="19">
     <div class="body-header" onclick="togM(6)">
       <div class="body-emoji-col">🔮</div>
       <div class="body-info-col">
@@ -505,7 +505,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="20" data-wmax="20">
     <div class="body-header" onclick="togM(7)">
       <div class="body-emoji-col">🎉</div>
       <div class="body-info-col">
@@ -537,7 +537,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="21" data-wmax="21">
     <div class="body-header" onclick="togM(8)">
       <div class="body-emoji-col">💜</div>
       <div class="body-info-col">
@@ -569,7 +569,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="22" data-wmax="22">
     <div class="body-header" onclick="togM(9)">
       <div class="body-emoji-col">🌟</div>
       <div class="body-info-col">
@@ -601,7 +601,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="23" data-wmax="23">
     <div class="body-header" onclick="togM(10)">
       <div class="body-emoji-col">🌙</div>
       <div class="body-info-col">
@@ -633,7 +633,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="24" data-wmax="24">
     <div class="body-header" onclick="togM(11)">
       <div class="body-emoji-col">🛡️</div>
       <div class="body-info-col">
@@ -665,7 +665,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="25" data-wmax="25">
     <div class="body-header" onclick="togM(12)">
       <div class="body-emoji-col">🌿</div>
       <div class="body-info-col">
@@ -697,7 +697,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="26" data-wmax="26">
     <div class="body-header" onclick="togM(13)">
       <div class="body-emoji-col">⚡</div>
       <div class="body-info-col">
@@ -729,7 +729,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="27" data-wmax="27">
     <div class="body-header" onclick="togM(14)">
       <div class="body-emoji-col">🌕</div>
       <div class="body-info-col">
@@ -761,7 +761,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="28" data-wmax="28">
     <div class="body-header" onclick="togM(15)">
       <div class="body-emoji-col">🌅</div>
       <div class="body-info-col">
@@ -793,7 +793,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="29" data-wmax="29">
     <div class="body-header" onclick="togM(16)">
       <div class="body-emoji-col">💧</div>
       <div class="body-info-col">
@@ -825,7 +825,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="30" data-wmax="30">
     <div class="body-header" onclick="togM(17)">
       <div class="body-emoji-col">🎃</div>
       <div class="body-info-col">
@@ -857,7 +857,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="31" data-wmax="31">
     <div class="body-header" onclick="togM(18)">
       <div class="body-emoji-col">🌬️</div>
       <div class="body-info-col">
@@ -889,7 +889,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="32" data-wmax="32">
     <div class="body-header" onclick="togM(19)">
       <div class="body-emoji-col">🛡️</div>
       <div class="body-info-col">
@@ -921,7 +921,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="33" data-wmax="33">
     <div class="body-header" onclick="togM(20)">
       <div class="body-emoji-col">🍍</div>
       <div class="body-info-col">
@@ -953,7 +953,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="34" data-wmax="34">
     <div class="body-header" onclick="togM(21)">
       <div class="body-emoji-col">🍈</div>
       <div class="body-info-col">
@@ -985,7 +985,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="35" data-wmax="35">
     <div class="body-header" onclick="togM(22)">
       <div class="body-emoji-col">🌟</div>
       <div class="body-info-col">
@@ -1017,7 +1017,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="36" data-wmax="36">
     <div class="body-header" onclick="togM(23)">
       <div class="body-emoji-col">🪺</div>
       <div class="body-info-col">
@@ -1049,7 +1049,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="37" data-wmax="37">
     <div class="body-header" onclick="togM(24)">
       <div class="body-emoji-col">⚔️</div>
       <div class="body-info-col">
@@ -1081,7 +1081,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="38" data-wmax="38">
     <div class="body-header" onclick="togM(25)">
       <div class="body-emoji-col">⏳</div>
       <div class="body-info-col">
@@ -1113,7 +1113,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="39" data-wmax="39">
     <div class="body-header" onclick="togM(26)">
       <div class="body-emoji-col">🌙</div>
       <div class="body-info-col">
@@ -1145,7 +1145,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="40" data-wmax="40">
     <div class="body-header" onclick="togM(27)">
       <div class="body-emoji-col">🌕</div>
       <div class="body-info-col">
@@ -1177,7 +1177,7 @@ document.head.appendChild(linkEl);
       </div>
     </div>
   </div>
-  <div class="body-card ">
+  <div class="body-card" data-wmin="41" data-wmax="42">
     <div class="body-header" onclick="togM(28)">
       <div class="body-emoji-col">👑</div>
       <div class="body-info-col">
@@ -1731,6 +1731,59 @@ function tog(i) {
 })();
 
 render();
+
+// Aggiorna sezione Martina: past raggruppate + corrente espansa (come Geralt)
+(function() {
+  const sc = window._settimanaCorrente;
+  const cont = document.getElementById('tab-martina');
+  if (!cont) return;
+  const cards = Array.from(cont.querySelectorAll('.body-card'));
+  const pastCards = [];
+
+  cards.forEach(card => {
+    const wmin = parseInt(card.dataset.wmin, 10);
+    const wmax = parseInt(card.dataset.wmax, 10);
+    card.classList.remove('current-m', 'past-m');
+    const bodyEl = card.querySelector('.body-body');
+    const chevEl = card.querySelector('.body-chev');
+    if (bodyEl) bodyEl.classList.remove('open');
+    if (chevEl) chevEl.classList.remove('open');
+    if (sc > wmax) {
+      card.classList.add('past-m');
+      pastCards.push(card);
+    } else if (sc >= wmin && sc <= wmax) {
+      card.classList.add('current-m');
+      card.id = 'card-oggi-m';
+      if (bodyEl) bodyEl.classList.add('open');
+      if (chevEl) chevEl.classList.add('open');
+    }
+  });
+
+  // Raggruppa le passate in un blocco collassato
+  if (pastCards.length > 0) {
+    const pastGroup = document.createElement('div');
+    pastGroup.className = 'past-group';
+    pastGroup.id = 'past-group-m';
+
+    const toggle = document.createElement('div');
+    toggle.className = 'past-collapsed';
+    toggle.innerHTML = `<span class="past-collapsed-icon">✅</span>
+      <span class="past-collapsed-text">
+        <strong>Settimane passate (${pastCards.length})</strong>
+        Tocca per espandere il corpo di Martina
+      </span>
+      <span class="past-collapsed-chev" id="past-chev-m">▾</span>`;
+    toggle.onclick = () => {
+      pastGroup.classList.toggle('open');
+      document.getElementById('past-chev-m').classList.toggle('open');
+    };
+
+    // Inserisci toggle+gruppo dove inizia la prima card passata
+    cont.insertBefore(toggle, pastCards[0]);
+    cont.insertBefore(pastGroup, pastCards[0]);
+    pastCards.forEach(c => pastGroup.appendChild(c));
+  }
+})();
 </script>
 <script>
 const tette_names = ["🍈 Tette", "🫧 Booobies!", "🌸 Popis"];
@@ -1813,7 +1866,7 @@ function togM(i) {
 })();
 
 // ── BANNER AGGIORNAMENTO ─────────────────────────
-const VERSIONE_CORRENTE = 10;
+const VERSIONE_CORRENTE = 11;
 (function() {
   const vistaDa = parseInt(localStorage.getItem('versione_vista') || '0');
   if (vistaDa < VERSIONE_CORRENTE) {
