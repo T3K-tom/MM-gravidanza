@@ -1,4 +1,4 @@
-<!-- VERSIONE: 15 -->
+<!-- VERSIONE: 16 -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -223,6 +223,9 @@ body > *:not(#stars-canvas) { position: relative; z-index: 1; }
 .acq-riga.comprato { opacity: 0.5; }
 .acq-riga.comprato td { text-decoration: line-through; }
 .acq-riga.comprato td:first-child { text-decoration: none; }
+.col-elim { display: none; }
+#acq-table.eliminando .col-elim { display: table-cell; }
+.del-check { width: 16px; height: 16px; accent-color: #E5484D; cursor: pointer; }
 .papa-unlock { text-align: center; font-size: 11px; color: var(--text3); margin: 8px 0 4px; font-style: italic; }
 .tab-bar { display: flex; gap: 0; margin-bottom: 14px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
 
@@ -1221,7 +1224,7 @@ document.head.appendChild(linkEl);
     <div style="margin-top:16px;background:linear-gradient(135deg,#3C348922,#3C348911);border:1px dashed #3C3489;border-radius:10px;padding:14px;font-size:12px;">
       <div id="acq-body">
         <div style="overflow-x:auto;">
-          <table style="width:100%;border-collapse:collapse;font-size:11px;">
+          <table id="acq-table" style="width:100%;border-collapse:collapse;font-size:11px;">
             <thead>
               <tr style="background:#3C348915;text-align:left;">
                 <th style="padding:6px 8px;border-bottom:1px solid #3C348930;color:#3C3489;">✔️</th>
@@ -1230,6 +1233,7 @@ document.head.appendChild(linkEl);
                 <th style="padding:6px 8px;border-bottom:1px solid #3C348930;color:#3C3489;">Importanza</th>
                 <th style="padding:6px 8px;border-bottom:1px solid #3C348930;color:#3C3489;">Prezzo medio</th>
                 <th style="padding:6px 8px;border-bottom:1px solid #3C348930;color:#3C3489;">A cosa serve / note</th>
+                <th class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348930;color:#3C3489;">🗑️</th>
               </tr>
             </thead>
             <tbody>
@@ -1240,6 +1244,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔴 Vitale</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">120-350€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Prevenzione SIDS. Il neonato deve dormire a pancia in su, su superficie rigida, senza cuscini, riduttori morbidi o peluche.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="1"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-2" data-imp="1" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-2" onchange="toggleAcquisto(2)"></td>
@@ -1248,6 +1254,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔴 Vitale</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">150-350€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Obbligatorio per legge e vitale per il trasporto. Verificare che rispetti la normativa europea più aggiornata (ECE R129/i-Size) — controllare su fonte ufficiale prima dell'acquisto.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="2"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-3" data-imp="1">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-3" onchange="toggleAcquisto(3)"></td>
@@ -1256,6 +1264,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔴 Vitale</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">12-25€ cad.</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Vestire il bambino — 5-7 per taglia.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="3"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-4" data-imp="1" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-4" onchange="toggleAcquisto(4)"></td>
@@ -1264,6 +1274,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔴 Vitale</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">8-15€ cad.</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Termoregolazione — calcolare 7-10 ricambi per taglia.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="4"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-5" data-imp="1">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-5" onchange="toggleAcquisto(5)"></td>
@@ -1272,6 +1284,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔴 Vitale</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">20-50€ kit</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Copripresa e blocca-cassetti, essenziali quando gattona.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="5"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-6" data-imp="1" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-6" onchange="toggleAcquisto(6)"></td>
@@ -1280,6 +1294,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔴 Vitale</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">~0,20€/pz</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Igiene della pelle — circa 180-240 al mese, 2500-3000 l'anno.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="6"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-7" data-imp="1">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-7" onchange="toggleAcquisto(7)"></td>
@@ -1288,6 +1304,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔴 Vitale</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">5-10€ (20 flaconi)</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Igiene quotidiana del naso (previene otiti e difficoltà respiratorie/di allattamento) e cura del moncone ombelicale.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="7"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-8" data-imp="1" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-8" onchange="toggleAcquisto(8)"></td>
@@ -1296,6 +1314,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔴 Vitale</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">—</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Monitoraggio della salute — la misurazione ascellare con termometro digitale è indicata come standard affidabile dalla SIPPS.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="8"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-9" data-imp="2">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-9" onchange="toggleAcquisto(9)"></td>
@@ -1304,6 +1324,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟡 Alto</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">50-120€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Favorisce il bonding (contatto pelle a pelle), riduce il pianto, previene la plagiocefalia posturale e sostiene lo sviluppo corretto delle anche (se ergonomico a "M").</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="9"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-10" data-imp="2" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-10" onchange="toggleAcquisto(10)"></td>
@@ -1312,6 +1334,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟡 Alto</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">40-150€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Cambio pannolino.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="10"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-11" data-imp="2">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-11" onchange="toggleAcquisto(11)"></td>
@@ -1320,6 +1344,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟡 Alto</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">10-15€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Per liberare le vie aeree in caso di raffreddore.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="11"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-12" data-imp="2" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-12" onchange="toggleAcquisto(12)"></td>
@@ -1328,6 +1354,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟡 Alto</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">5-10€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">La pelle del neonato è sottile e permeabile; lavare i vestiti separatamente, senza ammorbidente (sconsigliato dai dermatologi pediatrici).</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="12"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-13" data-imp="2">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-13" onchange="toggleAcquisto(13)"></td>
@@ -1336,6 +1364,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟡 Alto</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">5-20€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Limette di cartone o forbicine a punta tonda.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="13"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-14" data-imp="2" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-14" onchange="toggleAcquisto(14)"></td>
@@ -1344,6 +1374,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟡 Alto</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">15-30€ kit</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Multiuso: ruttino, allattamento, barriera sporco.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="14"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-15" data-imp="2">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-15" onchange="toggleAcquisto(15)"></td>
@@ -1352,6 +1384,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟡 Alto</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">300-800€+</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Spostamenti e uscite quotidiane all'aria aperta (utili per sintesi di vitamina D e stimolazione sensoriale).</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="15"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-16" data-imp="3" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-16" onchange="toggleAcquisto(16)"></td>
@@ -1360,6 +1394,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟢 Medio</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">10-30€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">1 per emergenza se allatti, 6 se usi formula. L'OMS raccomanda l'allattamento al seno esclusivo fino a 6 mesi; il biberon diventa essenziale solo se l'allattamento non è possibile o non esclusivo.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="16"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-17" data-imp="3">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-17" onchange="toggleAcquisto(17)"></td>
@@ -1368,6 +1404,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟢 Medio</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">15-40€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Sicurezza e comodità nell'igiene. Non servono oli o bagnoschiuma aggressivi (spesso basta amido di riso).</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="17"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-18" data-imp="3" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-18" onchange="toggleAcquisto(18)"></td>
@@ -1376,6 +1414,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟢 Medio</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">15-40€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Cura quotidiana.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="18"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-19" data-imp="3">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-19" onchange="toggleAcquisto(19)"></td>
@@ -1384,6 +1424,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟢 Medio</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">60-150€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Posizione sicura.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="19"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-20" data-imp="3" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-20" onchange="toggleAcquisto(20)"></td>
@@ -1392,6 +1434,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟢 Medio</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">70-180€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Svezzamento — quando il bambino raggiunge la stabilità posturale da seduto (requisito neuromotorio per l'alimentazione complementare sicura).</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="20"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-21" data-imp="3">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-21" onchange="toggleAcquisto(21)"></td>
@@ -1400,6 +1444,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟢 Medio</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">25-60€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Alimentazione solida.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="21"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-22" data-imp="3" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-22" onchange="toggleAcquisto(22)"></td>
@@ -1408,6 +1454,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟢 Medio</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">40-90€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Sviluppo psicomotorio e muscolare (tummy time supervisionato a pancia in giù). Box e girelli sconsigliati dai fisioterapisti pediatrici.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="22"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-23" data-imp="3">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-23" onchange="toggleAcquisto(23)"></td>
@@ -1416,6 +1464,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🟢 Medio</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">10-20€ cad.</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Igiene. Regola del 3: uno in uso, uno in lavaggio, uno di scorta.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="23"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-24" data-imp="4" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-24" onchange="toggleAcquisto(24)"></td>
@@ -1424,6 +1474,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔵 QoL</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">20-40€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Igiene domestica e contenimento odori.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="24"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-25" data-imp="4">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-25" onchange="toggleAcquisto(25)"></td>
@@ -1432,6 +1484,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔵 QoL</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">150-250€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Tiene il neonato a portata di mano per allattamento/ciuccio senza doversi alzare, mantenendolo nel proprio spazio sicuro.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="25"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-26" data-imp="4" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-26" onchange="toggleAcquisto(26)"></td>
@@ -1440,6 +1494,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔵 QoL</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">30-60€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Sostiene il peso del bambino durante l'allattamento, evitando contratture a schiena, collo e spalle della madre.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="26"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-27" data-imp="4">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-27" onchange="toggleAcquisto(27)"></td>
@@ -1448,6 +1504,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔵 QoL</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">15-25€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">La luce rossa/ambrata soffusa non blocca la produzione di melatonina — permette cambio pannolino/allattamento notturno senza "svegliare" il cervello.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="27"></td>
           </tr>
           <tr class="acq-riga" id="acq-riga-28" data-imp="4" style="background:#3C348908;">
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-28" onchange="toggleAcquisto(28)"></td>
@@ -1456,6 +1514,8 @@ document.head.appendChild(linkEl);
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">🔵 QoL</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">25-60€</td>
             <td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Sostituisce le coperte in modo sicuro, senza rischio che finiscano sul viso del bambino.</td>
+          
+            <td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="28"></td>
           </tr>
             </tbody>
           </table>
@@ -1467,6 +1527,7 @@ document.head.appendChild(linkEl);
           <div style="font-weight:600;color:#3C3489;font-size:12px;margin-bottom:8px;">➕ Aggiungi un elemento</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;">
             <input type="text" id="acq-nuovo-nome" placeholder="Nome oggetto" style="flex:1;min-width:140px;padding:8px;border-radius:6px;border:1px solid #3C348950;font-size:12px;background:var(--bg2);color:var(--text1);">
+            <input type="text" id="acq-nuovo-prezzo" placeholder="Costo (es. 20-40€)" style="width:120px;padding:8px;border-radius:6px;border:1px solid #3C348950;font-size:12px;background:var(--bg2);color:var(--text1);">
             <select id="acq-nuovo-imp" style="padding:8px;border-radius:6px;border:1px solid #3C348950;font-size:12px;background:var(--bg2);color:var(--text1);">
               <option value="1">🔴 Vitale</option>
               <option value="2">🟡 Alto</option>
@@ -1474,6 +1535,18 @@ document.head.appendChild(linkEl);
               <option value="4">🔵 QoL</option>
             </select>
             <button onclick="addAcquisto()" style="padding:8px 14px;border-radius:6px;border:none;background:#3C3489;color:#fff;font-size:12px;font-weight:600;cursor:pointer;">Aggiungi</button>
+          </div>
+        </div>
+        <div style="margin-top:10px;padding:10px;background:#E5484D15;border-radius:8px;">
+          <div id="acq-elim-normale">
+            <button onclick="toggleEliminaMode()" style="padding:8px 14px;border-radius:6px;border:1px solid #E5484D;background:transparent;color:#E5484D;font-size:12px;font-weight:600;cursor:pointer;">🗑️ Elimina elementi</button>
+          </div>
+          <div id="acq-elim-attiva" style="display:none;">
+            <div style="font-size:11px;color:#E5484D;margin-bottom:8px;">Spunta gli oggetti nella colonna 🗑️ della tabella, poi conferma qui sotto.</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <button onclick="confermaEliminaSelezionati()" style="padding:8px 14px;border-radius:6px;border:none;background:#E5484D;color:#fff;font-size:12px;font-weight:600;cursor:pointer;">🗑️ Conferma cancellazione (<span id="acq-elim-count">0</span>)</button>
+              <button onclick="toggleEliminaMode()" style="padding:8px 14px;border-radius:6px;border:1px solid var(--text3);background:transparent;color:var(--text3);font-size:12px;font-weight:600;cursor:pointer;">Annulla</button>
+            </div>
           </div>
         </div>
       </div>
@@ -2137,7 +2210,7 @@ function togM(i) {
 })();
 
 // ── BANNER AGGIORNAMENTO ─────────────────────────
-const VERSIONE_CORRENTE = 15;
+const VERSIONE_CORRENTE = 16;
 (function() {
   const vistaDa = parseInt(localStorage.getItem('versione_vista') || '0');
   if (vistaDa < VERSIONE_CORRENTE) {
@@ -2257,44 +2330,57 @@ function getAcquistiExtra() {
   }
 }
 
-function creaRigaAcquisto(id, nome, rank) {
+function getAcquistiEliminati() {
+  try {
+    return JSON.parse(localStorage.getItem('acquisti_eliminati') || '[]');
+  } catch (e) {
+    return [];
+  }
+}
+
+function creaRigaAcquisto(id, nome, rank, prezzo) {
   const labelMap = {1:'🔴 Vitale', 2:'🟡 Alto', 3:'🟢 Medio', 4:'🔵 QoL'};
   const tr = document.createElement('tr');
   tr.className = 'acq-riga';
   tr.id = 'acq-riga-' + id;
   tr.dataset.imp = rank;
+  const prezzoTxt = prezzo && prezzo.trim() ? prezzo.trim() : '—';
   tr.innerHTML =
     '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-' + id + '" onchange="toggleAcquisto(' + id + ')"></td>' +
     '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;"><strong>' + nome + '</strong></td>' +
     '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;">—</td>' +
     '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">' + labelMap[rank] + '</td>' +
-    '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">—</td>' +
-    '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Aggiunto da te.</td>';
+    '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">' + prezzoTxt + '</td>' +
+    '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Aggiunto da te.</td>' +
+    '<td class="col-elim" style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="del-check" data-id="' + id + '"></td>';
   return tr;
 }
 
 function addAcquisto() {
   const input = document.getElementById('acq-nuovo-nome');
+  const prezzoInput = document.getElementById('acq-nuovo-prezzo');
   const select = document.getElementById('acq-nuovo-imp');
   if (!input || !select) return;
   const nome = input.value.trim();
   if (!nome) return;
   const rank = parseInt(select.value);
+  const prezzo = prezzoInput ? prezzoInput.value.trim() : '';
 
   let nextId = parseInt(localStorage.getItem('acquisti_next_id') || '29');
   const id = nextId;
   localStorage.setItem('acquisti_next_id', String(nextId + 1));
 
   const extra = getAcquistiExtra();
-  extra.push({ id: id, nome: nome, rank: rank });
+  extra.push({ id: id, nome: nome, rank: rank, prezzo: prezzo });
   localStorage.setItem('acquisti_extra', JSON.stringify(extra));
 
   const tbody = document.querySelector('#acq-body tbody');
   if (tbody) {
-    tbody.appendChild(creaRigaAcquisto(id, nome, rank));
+    tbody.appendChild(creaRigaAcquisto(id, nome, rank, prezzo));
     riordinaAcquisti();
   }
   input.value = '';
+  if (prezzoInput) prezzoInput.value = '';
 }
 
 function getAcquistiComprati() {
@@ -2334,11 +2420,69 @@ function riordinaAcquisti() {
   righe.forEach(r => tbody.appendChild(r));
 }
 
+// ── Elimina elementi: seleziona + riconferma ──
+function toggleEliminaMode() {
+  const table = document.getElementById('acq-table');
+  const normale = document.getElementById('acq-elim-normale');
+  const attiva = document.getElementById('acq-elim-attiva');
+  if (!table || !normale || !attiva) return;
+  const attivo = table.classList.toggle('eliminando');
+  normale.style.display = attivo ? 'none' : 'block';
+  attiva.style.display = attivo ? 'block' : 'none';
+  if (!attivo) {
+    table.querySelectorAll('.del-check').forEach(c => { c.checked = false; });
+  }
+  aggiornaContatoreElimina();
+}
+
+function aggiornaContatoreElimina() {
+  const n = document.querySelectorAll('.del-check:checked').length;
+  const el = document.getElementById('acq-elim-count');
+  if (el) el.textContent = n;
+}
+
+function confermaEliminaSelezionati() {
+  const selezionati = Array.from(document.querySelectorAll('.del-check:checked'));
+  if (selezionati.length === 0) return;
+  const ok = confirm('Eliminare ' + selezionati.length + ' oggetto/i dalla lista? Non si può annullare.');
+  if (!ok) return;
+
+  const idsEliminati = getAcquistiEliminati();
+  let extra = getAcquistiExtra();
+
+  selezionati.forEach(chk => {
+    const id = parseInt(chk.dataset.id);
+    if (!idsEliminati.includes(id)) idsEliminati.push(id);
+    extra = extra.filter(e => e.id !== id);
+    const riga = document.getElementById('acq-riga-' + id);
+    if (riga) riga.remove();
+  });
+
+  localStorage.setItem('acquisti_eliminati', JSON.stringify(idsEliminati));
+  localStorage.setItem('acquisti_extra', JSON.stringify(extra));
+
+  toggleEliminaMode();
+}
+
+document.addEventListener('change', function(e) {
+  if (e.target && e.target.classList && e.target.classList.contains('del-check')) {
+    aggiornaContatoreElimina();
+  }
+});
+
 (function ripristinaAcquisti() {
   const tbody = document.querySelector('#acq-body tbody');
+  const eliminati = getAcquistiEliminati();
+
   if (tbody) {
-    getAcquistiExtra().forEach(({ id, nome, rank }) => {
-      tbody.appendChild(creaRigaAcquisto(id, nome, rank));
+    eliminati.forEach(id => {
+      const riga = document.getElementById('acq-riga-' + id);
+      if (riga) riga.remove();
+    });
+    getAcquistiExtra().forEach(({ id, nome, rank, prezzo }) => {
+      if (!eliminati.includes(id)) {
+        tbody.appendChild(creaRigaAcquisto(id, nome, rank, prezzo));
+      }
     });
   }
   const comprati = getAcquistiComprati();
