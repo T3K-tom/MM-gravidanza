@@ -1,4 +1,4 @@
-<!-- VERSIONE: 14 -->
+<!-- VERSIONE: 15 -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -1463,42 +1463,23 @@ document.head.appendChild(linkEl);
         <div style="margin-top:10px;padding:8px;background:#3C348915;border-radius:6px;color:#3C3489;font-size:11px;">
           ⚠️ Spunta un oggetto quando è stato acquistato: resta in lista ma barrato (salvato sul telefono). Norme di sicurezza come seggiolino auto (ECE R129/i-Size) possono aggiornarsi — verificare sempre la normativa ufficiale più recente prima dell'acquisto.
         </div>
+        <div style="margin-top:10px;padding:10px;background:#3C348915;border-radius:8px;">
+          <div style="font-weight:600;color:#3C3489;font-size:12px;margin-bottom:8px;">➕ Aggiungi un elemento</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <input type="text" id="acq-nuovo-nome" placeholder="Nome oggetto" style="flex:1;min-width:140px;padding:8px;border-radius:6px;border:1px solid #3C348950;font-size:12px;background:var(--bg2);color:var(--text1);">
+            <select id="acq-nuovo-imp" style="padding:8px;border-radius:6px;border:1px solid #3C348950;font-size:12px;background:var(--bg2);color:var(--text1);">
+              <option value="1">🔴 Vitale</option>
+              <option value="2">🟡 Alto</option>
+              <option value="3" selected>🟢 Medio</option>
+              <option value="4">🔵 QoL</option>
+            </select>
+            <button onclick="addAcquisto()" style="padding:8px 14px;border-radius:6px;border:none;background:#3C3489;color:#fff;font-size:12px;font-weight:600;cursor:pointer;">Aggiungi</button>
+          </div>
+        </div>
       </div>
     </div>
-
-</div>
-
-
-
-<div class="papa-section" id="papa-section">
-  <div style="background:linear-gradient(135deg,#F59E0B22,#F59E0B11);border:1px dashed #F59E0B;border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:#F59E0B;text-align:center;">🔐 Sezione segreta — solo per Tommaso</div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(0)"><div class="papa-emoji">🤢</div><div class="papa-title"><div class="papa-wnum">1° trimestre — La Grande Impresa</div><div class="papa-wdates">26 gen – 24 apr 2026</div></div><span class="papa-chev" id="pc0">▾</span></div><div class="papa-body" id="pb0"><p>Mentre Martina combatteva la nausea ogni mattina, tu eri lì. Stoico. A chiedere <strong>"stai bene?"</strong> ogni 10 minuti come se la risposta potesse cambiare.</p><p>Hai imparato che <strong>"non ho voglia di niente"</strong> significa in realtà che vuole una cosa precisa che non sa ancora qual è. Hai girato tre supermercati. <strong>Medaglia al valore.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(1)"><div class="papa-emoji">🛒</div><div class="papa-title"><div class="papa-wnum">Sett. 14 — Il Supermercato come Campo di Battaglia</div><div class="papa-wdates">4–10 mag 2026</div></div><span class="papa-chev" id="pc1">▾</span></div><div class="papa-body" id="pb1"><p>Le voglie sono arrivate. Hai imparato che <strong>"vai tu"</strong> alle 22:30 di un mercoledì è la frase più romantica che una donna incinta possa dirti. Sei andato. Eri un eroe.</p><p>Per circa 8 minuti. Finché non si è scoperto che voleva quelle al formaggio, non alla paprika. <strong>Sei ripartito.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(2)"><div class="papa-emoji">💤</div><div class="papa-title"><div class="papa-wnum">Sett. 15 — Il Letto Inaccessibile</div><div class="papa-wdates">11–17 mag 2026</div></div><span class="papa-chev" id="pc2">▾</span></div><div class="papa-body" id="pb2"><p>Attorno a Martina si è formato un <strong>sistema difensivo di cuscini</strong> degno di un castello medievale. Tu hai 15 cm di materasso. Sei felice di averli.</p><p>Esistono cuscini a forma di C, di U, di J. Ne avete comprati tre. <strong>Sei zen.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(3)"><div class="papa-emoji">📚</div><div class="papa-title"><div class="papa-wnum">Sett. 16 — L'Illuminazione Forzata</div><div class="papa-wdates">18–24 mag 2026</div></div><span class="papa-chev" id="pc3">▾</span></div><div class="papa-body" id="pb3"><p>Hai letto più libri sulla gravidanza nell'ultima settimana che in tutta la vita. Sai cos'è il meconio. <strong>Non volevi saperlo.</strong></p><p>La cosa positiva: sai esattamente cosa fa Gherard lassù. La cosa negativa: <strong>sai esattamente cosa fa Gherard lassù.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(4)"><div class="papa-emoji">🏗️</div><div class="papa-title"><div class="papa-wnum">Sett. 17 — Il Grande Cantiere</div><div class="papa-wdates">25–31 mag 2026</div></div><span class="papa-chev" id="pc4">▾</span></div><div class="papa-body" id="pb4"><p>È iniziata la <strong>fase di nidificazione</strong>. Martina vuole sistemare tutto. Hai montato un mobile IKEA in 3 ore. Le istruzioni dicevano 45 minuti. <strong>Erano bugiarde.</strong></p><p>"Dobbiamo pensare alla cameretta" significa "ho già deciso tutto, tu devi solo sollevare oggetti pesanti". <strong>Ruolo chiarissimo.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(5)"><div class="papa-emoji">👂</div><div class="papa-title"><div class="papa-wnum">Sett. 18 — La Prima Comunicazione</div><div class="papa-wdates">1–7 giu 2026</div></div><span class="papa-chev" id="pc5">▾</span></div><div class="papa-body" id="pb5"><p>Gherard inizia a sentire. Martina ti ha chiesto di <strong>parlargli</strong>. Hai parlato alla pancia. Hai detto qualcosa tipo "ciao, sono papà, spero che tu non esca come me". <strong>Ottimo inizio.</strong></p><p>Hai quasi pianto. <strong>Non lo dirai mai a nessuno.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(6)"><div class="papa-emoji">🔭</div><div class="papa-title"><div class="papa-wnum">Sett. 19 — L'Ecografia della Verità</div><div class="papa-wdates">8–14 giu 2026</div></div><span class="papa-chev" id="pc6">▾</span></div><div class="papa-body" id="pb6"><p>L'ecografia morfologica. Hai visto la testa, le mani, il cuore che batte. Hai realizzato che è reale. <strong>Dentro stavi urlando. Fuori eri dignitoso.</strong></p><p>Hai scoperto che piangere in sala ecografica è <strong>completamente accettabile</strong>. Tutti piangono. È una regola non scritta.</p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(7)"><div class="papa-emoji">🎉</div><div class="papa-title"><div class="papa-wnum">Sett. 20 — Metà strada, eroe</div><div class="papa-wdates">15–21 giu 2026</div></div><span class="papa-chev" id="pc7">▾</span></div><div class="papa-body" id="pb7"><p>Metà gravidanza. <strong>Sei ancora vivo.</strong> Questo è già un risultato notevole.</p><p>Hai imparato a non dire <strong>"sei sicura che fa male così tanto?"</strong> più di una volta. Una volta è sufficiente per imparare. <strong>Sei un witcher anche tu.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(8)"><div class="papa-emoji">🦵</div><div class="papa-title"><div class="papa-wnum">Sett. 21 — I Calci di Gherard</div><div class="papa-wdates">22–28 giu 2026</div></div><span class="papa-chev" id="pc8">▾</span></div><div class="papa-body" id="pb8"><p>Gherard calcia. Hai aspettato 20 minuti immobile per sentirlo. <strong>Ne è valsa la pena.</strong></p><p>I calci alle 3 di notte sono meno romantici. <strong>Gherard non rispetta gli orari.</strong> Si vede che è tuo figlio.</p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(9)"><div class="papa-emoji">💸</div><div class="papa-title"><div class="papa-wnum">Sett. 22 — Il Conto in Banca</div><div class="papa-wdates">29 giu – 5 lug 2026</div></div><span class="papa-chev" id="pc9">▾</span></div><div class="papa-body" id="pb9"><p>Hai guardato il conto. Poi la lista delle cose da comprare. Poi di nuovo il conto. <strong>Poi hai chiuso tutto.</strong></p><p>Esistono passeggini che costano quanto un'utilitaria usata. Martina ne vuole uno. <strong>State ancora trattando.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(10)"><div class="papa-emoji">🧘</div><div class="papa-title"><div class="papa-wnum">Sett. 23 — La Pratica della Pazienza</div><div class="papa-wdates">6–12 lug 2026</div></div><span class="papa-chev" id="pc10">▾</span></div><div class="papa-body" id="pb10"><p>Martina cambia idea su tutto tre volte al giorno. <strong>Tu annuisci.</strong> Hai raggiunto un livello di zen che nessun corso di meditazione avrebbe potuto darti.</p><p>Hai imparato che "cosa ne pensi?" non significa che vuole sapere cosa pensi. <strong>Lezione fondamentale.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(11)"><div class="papa-emoji">🩺</div><div class="papa-title"><div class="papa-wnum">Sett. 24 — Il Test del Glucosio</div><div class="papa-wdates">13–19 lug 2026</div></div><span class="papa-chev" id="pc11">▾</span></div><div class="papa-body" id="pb11"><p>Martina a digiuno, soluzione dolcissima, 2 ore di attesa. <strong>Sei andato con lei.</strong> Hai portato uno snack per dopo (anche per te — diciamolo).</p><p>Non puoi fare nulla per far passare 2 ore in ospedale. Puoi però finire tutta la batteria su Instagram. <strong>Fatto.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(12)"><div class="papa-emoji">😴</div><div class="papa-title"><div class="papa-wnum">Sett. 25 — Il Sonno Perduto</div><div class="papa-wdates">20–26 lug 2026</div></div><span class="papa-chev" id="pc12">▾</span></div><div class="papa-body" id="pb12"><p>Martina si sveglia ogni ora. Tu ogni volta che si sveglia lei. <strong>Nessuno dei due dorme.</strong> Questo è solo l'allenamento per dopo il parto.</p><p>Il letto ora è <strong>ufficialmente solo suo</strong>. Tu sei un ospite gradito. La stanchezza ti ha insegnato che il caffè è un sistema di sopravvivenza.</p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(13)"><div class="papa-emoji">🏋️</div><div class="papa-title"><div class="papa-wnum">Sett. 26 — L'Atletica della Quotidianità</div><div class="papa-wdates">27 lug – 2 ago 2026</div></div><span class="papa-chev" id="pc13">▾</span></div><div class="papa-body" id="pb13"><p>Raccogliere qualcosa da terra per Martina è diventato il tuo sport principale. <strong>Hai sviluppato una tecnica.</strong></p><p>Hai anche imparato ad allacciarle le scarpe. Non era nel piano. <strong>Eccoti qua.</strong> Martina ti ha detto che sei il migliore. Il segreto del successo è abbassarsi spesso.</p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(14)"><div class="papa-emoji">🏁</div><div class="papa-title"><div class="papa-wnum">Sett. 27 — Fine 2° Trimestre, eroe</div><div class="papa-wdates">3–9 ago 2026</div></div><span class="papa-chev" id="pc14">▾</span></div><div class="papa-body" id="pb14"><p>Sei arrivato alla fine del secondo trimestre. <strong>Sei cambiato.</strong> Sai montare mobili, aspettare, stare sveglio, e soprattutto sai quando stare zitto.</p><p>Mancano circa 13 settimane. <strong>Ce la fai. Ce la fate. ⚔️</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(15)"><div class="papa-emoji">🌅</div><div class="papa-title"><div class="papa-wnum">Sett. 28 — Il Rettilineo Finale</div><div class="papa-wdates">10–16 ago 2026</div></div><span class="papa-chev" id="pc15">▾</span></div><div class="papa-body" id="pb15"><p>Inizio del 3° trimestre. Hai calcolato che mancano circa 12 settimane. <strong>Poi hai smesso di calcolare perché ti veniva l'ansia.</strong></p><p>Hai iniziato a fissare la culla vuota in modo strano. Non è inquietante. <strong>È normale. Probabilmente.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(16)"><div class="papa-emoji">🎒</div><div class="papa-title"><div class="papa-wnum">Sett. 29–30 — La Borsa dell'Ospedale</div><div class="papa-wdates">17–30 ago 2026</div></div><span class="papa-chev" id="pc16">▾</span></div><div class="papa-body" id="pb16"><p>Martina ha fatto una lista di 47 cose per la borsa dell'ospedale. <strong>Quarantasette.</strong> Per tre giorni di degenza.</p><p>Hai scoperto che esistono ciabatte specifiche per il parto, pigiami con aperture strategiche e cuffie per il neonato in taglia "0 mesi". <strong>Il mondo è un posto strano e meraviglioso.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(17)"><div class="papa-emoji">📱</div><div class="papa-title"><div class="papa-wnum">Sett. 31–32 — Il Piano di Emergenza</div><div class="papa-wdates">31 ago – 13 set 2026</div></div><span class="papa-chev" id="pc17">▾</span></div><div class="papa-body" id="pb17"><p>Hai salvato il numero dell'ospedale nella rubrica come <strong>"GHERARD ARRIVA"</strong>. Hai pianificato il percorso. Hai pianificato il percorso alternativo. <strong>Hai pianificato cosa fare se le alternative non funzionano.</strong></p><p>Il telefono è carico al 100%. Sempre. <strong>Sei pronto come un witcher prima di una battaglia.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(18)"><div class="papa-emoji">🏥</div><div class="papa-title"><div class="papa-wnum">Sett. 33–34 — Le Ultime Visite</div><div class="papa-wdates">14–27 set 2026</div></div><span class="papa-chev" id="pc18">▾</span></div><div class="papa-body" id="pb18"><p>Sei andato a ogni visita. Hai stretto la mano di Martina durante il tampone GBS. <strong>Non sapevi cosa fosse. Lo sai adesso.</strong></p><p>Il medico ha detto che Gherard è in posizione cefalica. Hai annuito con competenza come se sapessi cosa vuol dire. <strong>Lo sai adesso.</strong> Testa in giù. È una cosa ottima.</p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(19)"><div class="papa-emoji">🌟</div><div class="papa-title"><div class="papa-wnum">Sett. 35–36 — Quasi Quasi</div><div class="papa-wdates">28 set – 11 ott 2026</div></div><span class="papa-chev" id="pc19">▾</span></div><div class="papa-body" id="pb19"><p>Martina ha il "nesting instinct" — vuole sistemare, pulire, riorganizzare tutto. <strong>Hai pulito cose che non avevi mai pulito in vita tua.</strong> Dietro il frigorifero. Dentro il forno. <strong>Il forno.</strong></p><p>Tecnicamente Gherard potrebbe arrivare già da questa settimana. <strong>Il telefono è sempre in tasca. Sempre.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(20)"><div class="papa-emoji">🎉</div><div class="papa-title"><div class="papa-wnum">Sett. 37 — A TERMINE, eroe!</div><div class="papa-wdates">12–18 ott 2026</div></div><span class="papa-chev" id="pc20">▾</span></div><div class="papa-body" id="pb20"><p>Gherard è ufficialmente a termine. <strong>Può arrivare in qualsiasi momento.</strong> Hai detto a tutti al lavoro. Hai configurato la risposta automatica alle email. <strong>Sei pronto.</strong></p><p>Martina ti ha chiesto se eri pronto. Hai detto di sì. <strong>Eri un bugiardo straordinario.</strong> Nessuno è mai pronto. Ed è perfetto così.</p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(21)"><div class="papa-emoji">⏰</div><div class="papa-title"><div class="papa-wnum">Sett. 38–39 — L'Attesa</div><div class="papa-wdates">19 ott – 1 nov 2026</div></div><span class="papa-chev" id="pc21">▾</span></div><div class="papa-body" id="pb21"><p>Ogni volta che Martina fa una pausa strana pensi sia il momento. <strong>Non è il momento.</strong> È il reflusso. O una Braxton-Hicks. O semplicemente una pausa.</p><p>Hai imparato a distinguere le contrazioni vere da quelle false. Principalmente perché <strong>quando sono vere, Martina non ti lascia parlare.</strong> Messaggio ricevuto.</p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(22)"><div class="papa-emoji">🌕</div><div class="papa-title"><div class="papa-wnum">Sett. 40 — Il Giorno del Destino</div><div class="papa-wdates">2–8 nov 2026</div></div><span class="papa-chev" id="pc22">▾</span></div><div class="papa-body" id="pb22"><p>Il 4 novembre 2026. La data presunta. <strong>Hai guardato il calendario 47 volte.</strong> Poi hai ricordato che solo il 5% dei bebè nasce esatto.</p><p>Sei quello che tiene la mano. Quello che dice "stai andando benissimo" anche quando non sai se è vero. <strong>È il lavoro più importante che tu abbia mai fatto.</strong></p></div></div>
-  <div class="papa-card"><div class="papa-header" onclick="togP(23)"><div class="papa-emoji">👑</div><div class="papa-title"><div class="papa-wnum">Sett. 41–42 — Il Witcher Paziente</div><div class="papa-wdates">9–22 nov 2026</div></div><span class="papa-chev" id="pc23">▾</span></div><div class="papa-body" id="pb23"><p>Gherard sta prendendo il suo tempo. <strong>Lo capisci perfettamente.</strong> Anche tu usciresti volentieri solo quando sei pronto.</p><p>Qualunque cosa accada ora — parto naturale, indotto, o cesareo — il tuo lavoro è lo stesso: <strong>esserci. Tenere la mano. Non svenire.</strong> Ce la fai. Siete quasi arrivati. ⚔️💜</p></div></div>
-
   <div style="margin-top:16px;background:linear-gradient(135deg,#1D9E7522,#1D9E7511);border:1px dashed #1D9E75;border-radius:10px;padding:14px;font-size:12px;">
-    <div style="font-weight:600;color:#1D9E75;margin-bottom:10px;">💶 Aiuti economici — checklist per Tommaso</div>
+    <div style="font-weight:600;color:#1D9E75;margin-bottom:10px;">💶 Aiuti economici</div>
     <table style="width:100%;border-collapse:collapse;font-size:11px;">
       <thead>
         <tr style="background:#1D9E7515;text-align:left;">
@@ -1563,6 +1544,38 @@ document.head.appendChild(linkEl);
       ⚠️ <strong>Prima cosa da fare adesso:</strong> ISEE 2026 al CAF (gratuito). Poi domanda Assegno Unico dalla sett. 28 in poi. Tutti i bonus sono cumulabili tranne Bonus Nido + detrazione fiscale. Portale: <strong>inps.it</strong> con SPID.
     </div>
   </div>
+
+</div>
+
+
+
+<div class="papa-section" id="papa-section">
+  <div style="background:linear-gradient(135deg,#F59E0B22,#F59E0B11);border:1px dashed #F59E0B;border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:#F59E0B;text-align:center;">🔐 Sezione segreta — solo per Tommaso</div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(0)"><div class="papa-emoji">🤢</div><div class="papa-title"><div class="papa-wnum">1° trimestre — La Grande Impresa</div><div class="papa-wdates">26 gen – 24 apr 2026</div></div><span class="papa-chev" id="pc0">▾</span></div><div class="papa-body" id="pb0"><p>Mentre Martina combatteva la nausea ogni mattina, tu eri lì. Stoico. A chiedere <strong>"stai bene?"</strong> ogni 10 minuti come se la risposta potesse cambiare.</p><p>Hai imparato che <strong>"non ho voglia di niente"</strong> significa in realtà che vuole una cosa precisa che non sa ancora qual è. Hai girato tre supermercati. <strong>Medaglia al valore.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(1)"><div class="papa-emoji">🛒</div><div class="papa-title"><div class="papa-wnum">Sett. 14 — Il Supermercato come Campo di Battaglia</div><div class="papa-wdates">4–10 mag 2026</div></div><span class="papa-chev" id="pc1">▾</span></div><div class="papa-body" id="pb1"><p>Le voglie sono arrivate. Hai imparato che <strong>"vai tu"</strong> alle 22:30 di un mercoledì è la frase più romantica che una donna incinta possa dirti. Sei andato. Eri un eroe.</p><p>Per circa 8 minuti. Finché non si è scoperto che voleva quelle al formaggio, non alla paprika. <strong>Sei ripartito.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(2)"><div class="papa-emoji">💤</div><div class="papa-title"><div class="papa-wnum">Sett. 15 — Il Letto Inaccessibile</div><div class="papa-wdates">11–17 mag 2026</div></div><span class="papa-chev" id="pc2">▾</span></div><div class="papa-body" id="pb2"><p>Attorno a Martina si è formato un <strong>sistema difensivo di cuscini</strong> degno di un castello medievale. Tu hai 15 cm di materasso. Sei felice di averli.</p><p>Esistono cuscini a forma di C, di U, di J. Ne avete comprati tre. <strong>Sei zen.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(3)"><div class="papa-emoji">📚</div><div class="papa-title"><div class="papa-wnum">Sett. 16 — L'Illuminazione Forzata</div><div class="papa-wdates">18–24 mag 2026</div></div><span class="papa-chev" id="pc3">▾</span></div><div class="papa-body" id="pb3"><p>Hai letto più libri sulla gravidanza nell'ultima settimana che in tutta la vita. Sai cos'è il meconio. <strong>Non volevi saperlo.</strong></p><p>La cosa positiva: sai esattamente cosa fa Gherard lassù. La cosa negativa: <strong>sai esattamente cosa fa Gherard lassù.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(4)"><div class="papa-emoji">🏗️</div><div class="papa-title"><div class="papa-wnum">Sett. 17 — Il Grande Cantiere</div><div class="papa-wdates">25–31 mag 2026</div></div><span class="papa-chev" id="pc4">▾</span></div><div class="papa-body" id="pb4"><p>È iniziata la <strong>fase di nidificazione</strong>. Martina vuole sistemare tutto. Hai montato un mobile IKEA in 3 ore. Le istruzioni dicevano 45 minuti. <strong>Erano bugiarde.</strong></p><p>"Dobbiamo pensare alla cameretta" significa "ho già deciso tutto, tu devi solo sollevare oggetti pesanti". <strong>Ruolo chiarissimo.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(5)"><div class="papa-emoji">👂</div><div class="papa-title"><div class="papa-wnum">Sett. 18 — La Prima Comunicazione</div><div class="papa-wdates">1–7 giu 2026</div></div><span class="papa-chev" id="pc5">▾</span></div><div class="papa-body" id="pb5"><p>Gherard inizia a sentire. Martina ti ha chiesto di <strong>parlargli</strong>. Hai parlato alla pancia. Hai detto qualcosa tipo "ciao, sono papà, spero che tu non esca come me". <strong>Ottimo inizio.</strong></p><p>Hai quasi pianto. <strong>Non lo dirai mai a nessuno.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(6)"><div class="papa-emoji">🔭</div><div class="papa-title"><div class="papa-wnum">Sett. 19 — L'Ecografia della Verità</div><div class="papa-wdates">8–14 giu 2026</div></div><span class="papa-chev" id="pc6">▾</span></div><div class="papa-body" id="pb6"><p>L'ecografia morfologica. Hai visto la testa, le mani, il cuore che batte. Hai realizzato che è reale. <strong>Dentro stavi urlando. Fuori eri dignitoso.</strong></p><p>Hai scoperto che piangere in sala ecografica è <strong>completamente accettabile</strong>. Tutti piangono. È una regola non scritta.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(7)"><div class="papa-emoji">🎉</div><div class="papa-title"><div class="papa-wnum">Sett. 20 — Metà strada, eroe</div><div class="papa-wdates">15–21 giu 2026</div></div><span class="papa-chev" id="pc7">▾</span></div><div class="papa-body" id="pb7"><p>Metà gravidanza. <strong>Sei ancora vivo.</strong> Questo è già un risultato notevole.</p><p>Hai imparato a non dire <strong>"sei sicura che fa male così tanto?"</strong> più di una volta. Una volta è sufficiente per imparare. <strong>Sei un witcher anche tu.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(8)"><div class="papa-emoji">🦵</div><div class="papa-title"><div class="papa-wnum">Sett. 21 — I Calci di Gherard</div><div class="papa-wdates">22–28 giu 2026</div></div><span class="papa-chev" id="pc8">▾</span></div><div class="papa-body" id="pb8"><p>Gherard calcia. Hai aspettato 20 minuti immobile per sentirlo. <strong>Ne è valsa la pena.</strong></p><p>I calci alle 3 di notte sono meno romantici. <strong>Gherard non rispetta gli orari.</strong> Si vede che è tuo figlio.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(9)"><div class="papa-emoji">💸</div><div class="papa-title"><div class="papa-wnum">Sett. 22 — Il Conto in Banca</div><div class="papa-wdates">29 giu – 5 lug 2026</div></div><span class="papa-chev" id="pc9">▾</span></div><div class="papa-body" id="pb9"><p>Hai guardato il conto. Poi la lista delle cose da comprare. Poi di nuovo il conto. <strong>Poi hai chiuso tutto.</strong></p><p>Esistono passeggini che costano quanto un'utilitaria usata. Martina ne vuole uno. <strong>State ancora trattando.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(10)"><div class="papa-emoji">🧘</div><div class="papa-title"><div class="papa-wnum">Sett. 23 — La Pratica della Pazienza</div><div class="papa-wdates">6–12 lug 2026</div></div><span class="papa-chev" id="pc10">▾</span></div><div class="papa-body" id="pb10"><p>Martina cambia idea su tutto tre volte al giorno. <strong>Tu annuisci.</strong> Hai raggiunto un livello di zen che nessun corso di meditazione avrebbe potuto darti.</p><p>Hai imparato che "cosa ne pensi?" non significa che vuole sapere cosa pensi. <strong>Lezione fondamentale.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(11)"><div class="papa-emoji">🩺</div><div class="papa-title"><div class="papa-wnum">Sett. 24 — Il Test del Glucosio</div><div class="papa-wdates">13–19 lug 2026</div></div><span class="papa-chev" id="pc11">▾</span></div><div class="papa-body" id="pb11"><p>Martina a digiuno, soluzione dolcissima, 2 ore di attesa. <strong>Sei andato con lei.</strong> Hai portato uno snack per dopo (anche per te — diciamolo).</p><p>Non puoi fare nulla per far passare 2 ore in ospedale. Puoi però finire tutta la batteria su Instagram. <strong>Fatto.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(12)"><div class="papa-emoji">😴</div><div class="papa-title"><div class="papa-wnum">Sett. 25 — Il Sonno Perduto</div><div class="papa-wdates">20–26 lug 2026</div></div><span class="papa-chev" id="pc12">▾</span></div><div class="papa-body" id="pb12"><p>Martina si sveglia ogni ora. Tu ogni volta che si sveglia lei. <strong>Nessuno dei due dorme.</strong> Questo è solo l'allenamento per dopo il parto.</p><p>Il letto ora è <strong>ufficialmente solo suo</strong>. Tu sei un ospite gradito. La stanchezza ti ha insegnato che il caffè è un sistema di sopravvivenza.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(13)"><div class="papa-emoji">🏋️</div><div class="papa-title"><div class="papa-wnum">Sett. 26 — L'Atletica della Quotidianità</div><div class="papa-wdates">27 lug – 2 ago 2026</div></div><span class="papa-chev" id="pc13">▾</span></div><div class="papa-body" id="pb13"><p>Raccogliere qualcosa da terra per Martina è diventato il tuo sport principale. <strong>Hai sviluppato una tecnica.</strong></p><p>Hai anche imparato ad allacciarle le scarpe. Non era nel piano. <strong>Eccoti qua.</strong> Martina ti ha detto che sei il migliore. Il segreto del successo è abbassarsi spesso.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(14)"><div class="papa-emoji">🏁</div><div class="papa-title"><div class="papa-wnum">Sett. 27 — Fine 2° Trimestre, eroe</div><div class="papa-wdates">3–9 ago 2026</div></div><span class="papa-chev" id="pc14">▾</span></div><div class="papa-body" id="pb14"><p>Sei arrivato alla fine del secondo trimestre. <strong>Sei cambiato.</strong> Sai montare mobili, aspettare, stare sveglio, e soprattutto sai quando stare zitto.</p><p>Mancano circa 13 settimane. <strong>Ce la fai. Ce la fate. ⚔️</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(15)"><div class="papa-emoji">🌅</div><div class="papa-title"><div class="papa-wnum">Sett. 28 — Il Rettilineo Finale</div><div class="papa-wdates">10–16 ago 2026</div></div><span class="papa-chev" id="pc15">▾</span></div><div class="papa-body" id="pb15"><p>Inizio del 3° trimestre. Hai calcolato che mancano circa 12 settimane. <strong>Poi hai smesso di calcolare perché ti veniva l'ansia.</strong></p><p>Hai iniziato a fissare la culla vuota in modo strano. Non è inquietante. <strong>È normale. Probabilmente.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(16)"><div class="papa-emoji">🎒</div><div class="papa-title"><div class="papa-wnum">Sett. 29–30 — La Borsa dell'Ospedale</div><div class="papa-wdates">17–30 ago 2026</div></div><span class="papa-chev" id="pc16">▾</span></div><div class="papa-body" id="pb16"><p>Martina ha fatto una lista di 47 cose per la borsa dell'ospedale. <strong>Quarantasette.</strong> Per tre giorni di degenza.</p><p>Hai scoperto che esistono ciabatte specifiche per il parto, pigiami con aperture strategiche e cuffie per il neonato in taglia "0 mesi". <strong>Il mondo è un posto strano e meraviglioso.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(17)"><div class="papa-emoji">📱</div><div class="papa-title"><div class="papa-wnum">Sett. 31–32 — Il Piano di Emergenza</div><div class="papa-wdates">31 ago – 13 set 2026</div></div><span class="papa-chev" id="pc17">▾</span></div><div class="papa-body" id="pb17"><p>Hai salvato il numero dell'ospedale nella rubrica come <strong>"GHERARD ARRIVA"</strong>. Hai pianificato il percorso. Hai pianificato il percorso alternativo. <strong>Hai pianificato cosa fare se le alternative non funzionano.</strong></p><p>Il telefono è carico al 100%. Sempre. <strong>Sei pronto come un witcher prima di una battaglia.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(18)"><div class="papa-emoji">🏥</div><div class="papa-title"><div class="papa-wnum">Sett. 33–34 — Le Ultime Visite</div><div class="papa-wdates">14–27 set 2026</div></div><span class="papa-chev" id="pc18">▾</span></div><div class="papa-body" id="pb18"><p>Sei andato a ogni visita. Hai stretto la mano di Martina durante il tampone GBS. <strong>Non sapevi cosa fosse. Lo sai adesso.</strong></p><p>Il medico ha detto che Gherard è in posizione cefalica. Hai annuito con competenza come se sapessi cosa vuol dire. <strong>Lo sai adesso.</strong> Testa in giù. È una cosa ottima.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(19)"><div class="papa-emoji">🌟</div><div class="papa-title"><div class="papa-wnum">Sett. 35–36 — Quasi Quasi</div><div class="papa-wdates">28 set – 11 ott 2026</div></div><span class="papa-chev" id="pc19">▾</span></div><div class="papa-body" id="pb19"><p>Martina ha il "nesting instinct" — vuole sistemare, pulire, riorganizzare tutto. <strong>Hai pulito cose che non avevi mai pulito in vita tua.</strong> Dietro il frigorifero. Dentro il forno. <strong>Il forno.</strong></p><p>Tecnicamente Gherard potrebbe arrivare già da questa settimana. <strong>Il telefono è sempre in tasca. Sempre.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(20)"><div class="papa-emoji">🎉</div><div class="papa-title"><div class="papa-wnum">Sett. 37 — A TERMINE, eroe!</div><div class="papa-wdates">12–18 ott 2026</div></div><span class="papa-chev" id="pc20">▾</span></div><div class="papa-body" id="pb20"><p>Gherard è ufficialmente a termine. <strong>Può arrivare in qualsiasi momento.</strong> Hai detto a tutti al lavoro. Hai configurato la risposta automatica alle email. <strong>Sei pronto.</strong></p><p>Martina ti ha chiesto se eri pronto. Hai detto di sì. <strong>Eri un bugiardo straordinario.</strong> Nessuno è mai pronto. Ed è perfetto così.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(21)"><div class="papa-emoji">⏰</div><div class="papa-title"><div class="papa-wnum">Sett. 38–39 — L'Attesa</div><div class="papa-wdates">19 ott – 1 nov 2026</div></div><span class="papa-chev" id="pc21">▾</span></div><div class="papa-body" id="pb21"><p>Ogni volta che Martina fa una pausa strana pensi sia il momento. <strong>Non è il momento.</strong> È il reflusso. O una Braxton-Hicks. O semplicemente una pausa.</p><p>Hai imparato a distinguere le contrazioni vere da quelle false. Principalmente perché <strong>quando sono vere, Martina non ti lascia parlare.</strong> Messaggio ricevuto.</p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(22)"><div class="papa-emoji">🌕</div><div class="papa-title"><div class="papa-wnum">Sett. 40 — Il Giorno del Destino</div><div class="papa-wdates">2–8 nov 2026</div></div><span class="papa-chev" id="pc22">▾</span></div><div class="papa-body" id="pb22"><p>Il 4 novembre 2026. La data presunta. <strong>Hai guardato il calendario 47 volte.</strong> Poi hai ricordato che solo il 5% dei bebè nasce esatto.</p><p>Sei quello che tiene la mano. Quello che dice "stai andando benissimo" anche quando non sai se è vero. <strong>È il lavoro più importante che tu abbia mai fatto.</strong></p></div></div>
+  <div class="papa-card"><div class="papa-header" onclick="togP(23)"><div class="papa-emoji">👑</div><div class="papa-title"><div class="papa-wnum">Sett. 41–42 — Il Witcher Paziente</div><div class="papa-wdates">9–22 nov 2026</div></div><span class="papa-chev" id="pc23">▾</span></div><div class="papa-body" id="pb23"><p>Gherard sta prendendo il suo tempo. <strong>Lo capisci perfettamente.</strong> Anche tu usciresti volentieri solo quando sei pronto.</p><p>Qualunque cosa accada ora — parto naturale, indotto, o cesareo — il tuo lavoro è lo stesso: <strong>esserci. Tenere la mano. Non svenire.</strong> Ce la fai. Siete quasi arrivati. ⚔️💜</p></div></div>
+
 </div>
 
 <p style="font-size:11px;color:#ccc;margin-top:20px;line-height:1.6;">⚠️ Anche i witcher consultano gli esperti — queste info sono indicative e non sostituiscono il parere del ginecologo, il vero stregone di Martina 🧙‍♂️</p>
@@ -2124,7 +2137,7 @@ function togM(i) {
 })();
 
 // ── BANNER AGGIORNAMENTO ─────────────────────────
-const VERSIONE_CORRENTE = 14;
+const VERSIONE_CORRENTE = 15;
 (function() {
   const vistaDa = parseInt(localStorage.getItem('versione_vista') || '0');
   if (vistaDa < VERSIONE_CORRENTE) {
@@ -2149,6 +2162,10 @@ function switchTab(tab) {
     document.getElementById('tab-'+t).classList.toggle('active', tab === t);
     document.getElementById('btn-'+t).classList.toggle('active', tab === t);
   });
+  if (tab !== 'martina') {
+    const s = document.getElementById('papa-section');
+    if (s) s.classList.remove('visible');
+  }
 }
 
 // ── TEMA ──────────────────────────────────────────
@@ -2232,6 +2249,54 @@ function togP(i) {
 }
 
 // ── Acquisti di mamma: persistenza spunte ──
+function getAcquistiExtra() {
+  try {
+    return JSON.parse(localStorage.getItem('acquisti_extra') || '[]');
+  } catch (e) {
+    return [];
+  }
+}
+
+function creaRigaAcquisto(id, nome, rank) {
+  const labelMap = {1:'🔴 Vitale', 2:'🟡 Alto', 3:'🟢 Medio', 4:'🔵 QoL'};
+  const tr = document.createElement('tr');
+  tr.className = 'acq-riga';
+  tr.id = 'acq-riga-' + id;
+  tr.dataset.imp = rank;
+  tr.innerHTML =
+    '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;text-align:center;"><input type="checkbox" class="acq-check" id="acq-' + id + '" onchange="toggleAcquisto(' + id + ')"></td>' +
+    '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;"><strong>' + nome + '</strong></td>' +
+    '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;">—</td>' +
+    '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">' + labelMap[rank] + '</td>' +
+    '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;white-space:nowrap;">—</td>' +
+    '<td style="padding:6px 8px;border-bottom:1px solid #3C348920;min-width:220px;">Aggiunto da te.</td>';
+  return tr;
+}
+
+function addAcquisto() {
+  const input = document.getElementById('acq-nuovo-nome');
+  const select = document.getElementById('acq-nuovo-imp');
+  if (!input || !select) return;
+  const nome = input.value.trim();
+  if (!nome) return;
+  const rank = parseInt(select.value);
+
+  let nextId = parseInt(localStorage.getItem('acquisti_next_id') || '29');
+  const id = nextId;
+  localStorage.setItem('acquisti_next_id', String(nextId + 1));
+
+  const extra = getAcquistiExtra();
+  extra.push({ id: id, nome: nome, rank: rank });
+  localStorage.setItem('acquisti_extra', JSON.stringify(extra));
+
+  const tbody = document.querySelector('#acq-body tbody');
+  if (tbody) {
+    tbody.appendChild(creaRigaAcquisto(id, nome, rank));
+    riordinaAcquisti();
+  }
+  input.value = '';
+}
+
 function getAcquistiComprati() {
   try {
     return JSON.parse(localStorage.getItem('acquisti_comprati') || '[]');
@@ -2270,6 +2335,12 @@ function riordinaAcquisti() {
 }
 
 (function ripristinaAcquisti() {
+  const tbody = document.querySelector('#acq-body tbody');
+  if (tbody) {
+    getAcquistiExtra().forEach(({ id, nome, rank }) => {
+      tbody.appendChild(creaRigaAcquisto(id, nome, rank));
+    });
+  }
   const comprati = getAcquistiComprati();
   comprati.forEach(i => {
     const check = document.getElementById('acq-' + i);
