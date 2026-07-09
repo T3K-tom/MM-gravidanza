@@ -1,4 +1,4 @@
-<!-- VERSIONE: 16 -->
+<!-- VERSIONE: 17 -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -1835,16 +1835,16 @@ const weeks = [
   { n:26, label:"Settimana 26", dates:"27 lug – 2 ago 2026", svgKey:26,
     baby:["Lungo ~35 cm, pesa ~800–910 g","I polmoni producono surfattante in quantità crescente","Le palpebre iniziano ad aprirsi e chiudersi","Distingue luci e ombre","Battito cardiaco ~140 bpm"],
     mama:["Fine imminente del 2° trimestre","Baricentro spostato — possibile difficoltà di equilibrio","Contrazioni di Braxton-Hicks più frequenti"],
-    exam:["★ Curva glicemica se non ancora eseguita"], note:[] },
+    exam:["★ Curva glicemica OGTT, esami del sangue di routine e urinocoltura — fine luglio"], note:[] },
   { n:27, label:"Settimana 27 — il witcher è quasi pronto 🌕", dates:"3–9 ago 2026", svgKey:27,
     baby:["Lungo ~36–37 cm, pesa ~900–1.050 g","Il sistema nervoso matura ulteriormente","La pelle diventa più liscia con l'accumulo di adipe","Dorme e si sveglia in cicli regolari","Può succhiare il pollice"],
     mama:["Fine del 2° trimestre — dalla sett. 28 inizia il 3°","Possibile stitichezza e bruciori di stomaco più intensi","Gonfiore agli arti inferiori spesso più marcato la sera"],
-    exam:[],
+    exam:["Prenota ecografia di accrescimento (da fare poi tra 2 e 15 set)"],
     note:["Dal prossimo capitolo inizia il 3° atto — il witcher si prepara al grande salto verso il Continente 🌕⚔️","📋 Visita ginecologica 7° mese: il medico ha rilasciato la certificazione per il medico del lavoro — la Sorceress può proseguire la sua missione oltre il termine di legge. I mesi non goduti prima del parto si aggiungono alla maternità post parto. La burocrazia del Continente è vinta! ⚔️✨"] },
   { n:28, label:"Settimana 28 — il 3° atto ha inizio 🌅", dates:"10–16 ago 2026", svgKey:28,
     baby:["Lungo ~38 cm, pesa ~1,1 kg — un cavolo cappuccio da witcher 🥬","Il cervello forma rapidamente nuove sinapsi","Gli occhi si aprono per la prima volta — percepisce la luce","Inizia a regolare la propria temperatura corporea","Il sistema immunitario riceve anticorpi dalla mamma"],
     mama:["Inizio del 3° trimestre — il rettilineo finale!","Mancanza di respiro più frequente — polmoni compressi","Contrazioni di Braxton-Hicks sempre più percepibili","Il sonno diventa più difficile — posizione sul fianco sinistro consigliata"],
-    exam:["Visita ostetrica di controllo","Ecografia di accrescimento (se prescritta)"],
+    exam:["Visita ostetrica di controllo","Ecografia di accrescimento (se prescritta)","★ Vaccino dTpa — finestra 15 ago → 10 set"],
     note:["Il 3° atto è iniziato — il witcher è in fase di rifinitura finale. Mancano circa 12 settimane all'arrivo di Gherard sul Continente! 🌅⚔️"] },
   { n:29, label:"Settimana 29", dates:"17–23 ago 2026", svgKey:29,
     baby:["Lungo ~39 cm, pesa ~1,2 kg","I muscoli e i polmoni maturano rapidamente","Il grasso corporeo aumenta — la pelle diventa più liscia","Distingue la voce di mamma da tutte le altre","Il midollo osseo produce globuli rossi in autonomia"],
@@ -1864,7 +1864,7 @@ const weeks = [
   { n:32, label:"Settimana 32 — Gherard si posiziona 🛡️", dates:"7–13 set 2026", svgKey:32,
     baby:["Lungo ~43 cm, pesa ~1,7 kg — come un'anguria mini 🍉","Le unghie dei piedi sono complete","Le pupille reagiscono alla luce","Il cervelletto coordina i movimenti","Dorme 20-22 ore su 24 — si sta preparando"],
     mama:["Visita ostetrica importante — si controlla la presentazione","Possibile gonfiore a mani, piedi e viso","Stanchezza molto intensa — è normale","Il seno può perdere colostro"],
-    exam:["★ Visita ostetrica — posizione del bebè, altezza del fundus","Eventuale ecografia di accrescimento"],
+    exam:["★ Visita ostetrica — posizione del bebè, altezza del fundus","★ Ecografia di accrescimento — 2–15 set"],
     note:["★ Da questa settimana i movimenti fetali vanno contati ogni giorno — 10 movimenti in 2 ore è la soglia di tranquillità 🛡️"] },
   { n:33, label:"Settimana 33", dates:"14–20 set 2026", svgKey:33,
     baby:["Lungo ~44 cm, pesa ~1,9 kg — un ananas da witcher 🍍","Il cranio è ancora morbido — si modellerà durante il parto","La coordinazione degli occhi si affina","Il sistema digestivo è quasi pronto","I polmoni producono surfattante in abbondanza"],
@@ -2210,7 +2210,7 @@ function togM(i) {
 })();
 
 // ── BANNER AGGIORNAMENTO ─────────────────────────
-const VERSIONE_CORRENTE = 16;
+const VERSIONE_CORRENTE = 17;
 (function() {
   const vistaDa = parseInt(localStorage.getItem('versione_vista') || '0');
   if (vistaDa < VERSIONE_CORRENTE) {
